@@ -7,39 +7,47 @@ Esta api maneja todo lo relativo a la pantalla de inicio donde se muestran promo
 **Rutas :
 
 
-GET: http://localhost:4000/inicio
+GET: http://localhost:4001/viaje
 
 
-POST: http://localhost:4000/inicio 
+POST: http://localhost:4001/viaje
 
 
         body: {  
           "id": x,
-          "imagen": "url",
-          "textoImagen": "Text",          
-          "video": "url",
-          "textoVideo": "text"
+          "Hotel": "Las palmeras",
+          "ubicHotel": "Av los Patos 1943",          
+          "fotosHotel": "url",
+          "videoHotel": "url",
+          "estadia": "5 noches",
+          "cronograma": "???",
+          "menu": "Texto",
+          "coordinador": "Pedro Sanchez",
+          "inicioViaje": "Guarda la fecha de la activacion del viaje",
+          "ultimaUbic": "Guarda las coordenadas de la ultima ubcación",
+          "finViaje": "Guarda la fecha que se finaliza el viaje",
+          "muro": "[{imagen:url,idEmogi:contador}, {imagen:url,id},...]",
         }
 
 
-GET by id: http://localhost:4000/inicio/id
+GET by id: http://localhost:4001/viaje/id
 
 
-PUT http://localhost:4000/inicio/id
+PUT http://localhost:4001/viaje/id
 
 
     body: { //info a modificar ej:
-        "video": "url"
+        "ultimaUbic": "2344.5566, 34453.666"
     }
 
     
-DELETE http://localhost:4000/inicio/id
+DELETE http://localhost:4001/viaje/id
 
 
 Variable de entorno para el archivo .env
 
 
-PORT='4000'
+PORT='4001'
 DB_USER ='postgres'
 DB_NAME = 'postgres'
 DB_PORT = '5433'
