@@ -1,4 +1,4 @@
-Esta api maneja todo lo relativo al viaje. 
+Esta api maneja todo lo relativo a la pantalla de inicio donde se muestran promociones de la empresa
 
 
 **iniciar la api: npm start
@@ -7,47 +7,39 @@ Esta api maneja todo lo relativo al viaje.
 **Rutas :
 
 
-GET: http://localhost:4001/viaje  
+GET: http://localhost:4000/inicio
 
 
-POST: http://localhost:4001/viaje 
+POST: http://localhost:4000/inicio 
 
 
         body: {  
-          "id": 4,
-          "Hotel": "Canchita",
-          "ubicHotel": "Av. independencia 34, Tandil",          
-          "fotosHotel": "url",
-          "videoHotel": "url",
-          "estadia": "5 noches",
-          "cronograma": ???,
-          "menu": "Medio día: bufette, noche a la carta",
-          "coordinador": "Sergio Donovan",
-          "inicioViaje": "al activar el viaje debe guardar la fecha",
-          "ultimaUbic": "aca van las coordenadas",
-          "finViaje": "al finalizar el viaje debe guardar fecha ",
-          "muro": "[{imagen1: url, id_emogi: contador}, {imagen1: url, id_emogi: contador}, ...] "
+          "id": x,
+          "imagen": "url",
+          "textoImagen": "Text",          
+          "video": "url",
+          "textoVideo": "text"
         }
 
 
-GET by id: http://localhost:4001/viaje/id
+GET by id: http://localhost:4000/inicio/id
 
 
-PUT http://localhost:4001/viaje/id
+PUT http://localhost:4000/inicio/id
 
 
     body: { //info a modificar ej:
-        "ultimaUbic": "aca van las coordenadas"
+        "video": "url"
     }
 
     
-DELETE http://localhost:4001/viaje/id
+DELETE http://localhost:4000/inicio/id
 
 
 Variable de entorno para el archivo .env
 
 
-PORT='4001'
+PORT='4000'
 DB_USER ='postgres'
 DB_NAME = 'postgres'
 DB_PORT = '5433'
