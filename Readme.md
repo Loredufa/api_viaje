@@ -31,18 +31,23 @@ GET: http://localhost:4001/contratos/select
 [num, num, num, num, num, num, num, num]
 
 Para dar de alta un viaje:
-          "inicioViaje": "Guarda la fecha de la activacion del viaje",
+PUT: http://localhost:4001/:id
+
+          "inicioViaje": "fecha de la activacion del viaje",
 
 
-Para actualizar la ubucacion
-          "ultimaUbic": "Guarda las coordenadas de la ultima ubcación",
+Para actualizar la ubicacion
+PUT: http://localhost:4001/:id
+          "ultimaUbic": "coordenadas de la ultima ubcación",
 
 
-Para dar de baja un biaje
-          "finViaje": "Guarda la fecha que se finaliza el viaje",
+Para dar de baja un viaje
+PUT: http://localhost:4001/:id
+          "finViaje": "fecha en la que se finaliza el viaje",
 
 
-Para actualizar el muro
+Para modificar el muro
+PUT: http://localhost:4001/:id
           "muro": "[{imagen:url,idEmogi:contador}, {imagen:url,id},...]",
 
 
