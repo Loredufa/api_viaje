@@ -10,12 +10,11 @@ Esta api maneja todo lo relativo a la pantalla de inicio donde se muestran promo
 GET: http://localhost:4001/viaje
 
 
-POST: http://localhost:4001/viaje
+POST: http://localhost:4001/nuevoviaje
 
 
         body: {  
-          "id": x,
-          "Hotel": "Las palmeras",
+          "hotel": "Las palmeras",
           "ubicHotel": "Av los Patos 1943",          
           "fotosHotel": "url",
           "videoHotel": "url",
@@ -23,11 +22,24 @@ POST: http://localhost:4001/viaje
           "cronograma": "???",
           "menu": "Texto",
           "coordinador": "Pedro Sanchez",
-          "inicioViaje": "Guarda la fecha de la activacion del viaje",
-          "ultimaUbic": "Guarda las coordenadas de la ultima ubcación",
-          "finViaje": "Guarda la fecha que se finaliza el viaje",
-          "muro": "[{imagen:url,idEmogi:contador}, {imagen:url,id},...]",
+          "contratos": "[num, num, num]"
         }
+
+
+Para dar de alta un viaje:
+          "inicioViaje": "Guarda la fecha de la activacion del viaje",
+
+
+Para actualizar la ubucacion
+          "ultimaUbic": "Guarda las coordenadas de la ultima ubcación",
+
+
+Para dar de baja un biaje
+          "finViaje": "Guarda la fecha que se finaliza el viaje",
+
+
+Para actualizar el muro
+          "muro": "[{imagen:url,idEmogi:contador}, {imagen:url,id},...]",
 
 
 GET by id: http://localhost:4001/viaje/id
@@ -49,8 +61,8 @@ Variable de entorno para el archivo .env
 
 PORT='4001'
 DB_USER ='postgres'
-DB_NAME = 'postgres'
-DB_PORT = '5433'
+DB_NAME = 'cuyen'
+DB_PORT = '5432'
 HOST = 'localhost'
 DB_PASSWORD="xxxxx"
 DB_HOST = 'localhost'

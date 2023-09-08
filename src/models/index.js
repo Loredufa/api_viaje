@@ -19,18 +19,15 @@ const Login = Logins(sequelize)
 
 //Relaciones
 
-Travel.hasMany(Excursion)
-Excursion.belongsTo (Travel) // coloca viajeId en Excursion
 
 Travel.hasMany(Contract)
-Contract.belongsTo (Travel) // coloca travelId en contract
+Contract.belongsTo(Travel, { foreignKey: 'travelId' }); // coloca travelId en contract
 
 Contract.hasMany(Passenger)
 Passenger.belongsTo (Contract) // coloca Contract_id en Passenger
 
 Passenger.hasMany(Login)
 Login.belongsTo (Passenger) // coloca PassengerId en Login
-
 
 module.exports = {
     conn: sequelize,
@@ -39,5 +36,6 @@ module.exports = {
     Landing,
     Contract,
     Passenger,
-    Login
+    Login,
+    sequelize
 }

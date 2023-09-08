@@ -3,19 +3,9 @@ const { Travel } = require('../models/index')
 const getAllViaje = async (req, res) => {
   try {
     const viaje = await Travel.findAll()
-    res.send(viaje)
+    res.status(200).send(viaje) 
   } catch (error) { console.log("Algo salio mal: ", error); 
     throw error; //lanzo el error
-}
-}
-
-const addViaje = async (req,res) => {
-  try {
-    const viaje = req.body
-    const newViaje = await Travel.create(viaje)
-    res.send(newViaje)
-  } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error 
 }
 }
 
@@ -58,7 +48,6 @@ const deleteViaje = (req, res, next) => {
 module.exports = {
     getAllViaje,
     getViajeById,
-    addViaje,
     putViaje,
     deleteViaje
 
