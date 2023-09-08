@@ -23,8 +23,23 @@ const addContrato = async (req,res) => {
   }
   }
 
+  const selectContratos = async (req, res) => {
+    try {
+      const contrato = await Contract.findAll()
+      if (contrato) {
+        const contratos = contrato.map((contr) => contr.num).sort((a, b) => b - a)
+        res.send(contratos);
+      } else {
+        res.status(404).send({ mensaje: "No hay ningún contrato" });
+      }
+    } catch (error) { console.log("Algo salio mal: ", error); 
+      throw error; //lanzo el error
+  }
+  }
+
   module.exports = {
     addContrato,
-    getAllContratos
+    getAllContratos,
+    selectContratos
 
 }

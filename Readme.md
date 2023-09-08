@@ -10,7 +10,7 @@ Esta api maneja todo lo relativo a la pantalla de inicio donde se muestran promo
 GET: http://localhost:4001/viaje
 
 
-POST: http://localhost:4001/nuevoviaje
+POST: http://localhost:4001/nuevoviaje   **Ver consideraciones **
 
 
         body: {  
@@ -24,7 +24,11 @@ POST: http://localhost:4001/nuevoviaje
           "coordinador": "Pedro Sanchez",
           "contratos": "[num, num, num]"
         }
+**Consideraciones: La funcion no valida que los numeros de contrato sean correctos, para ello sugiero colocar un select para completar el campo "contratos", genere una ruta que trae todos los contratos ordenados de manera descendente**
 
+GET: http://localhost:4001/contratos/select
+
+[num, num, num, num, num, num, num, num]
 
 Para dar de alta un viaje:
           "inicioViaje": "Guarda la fecha de la activacion del viaje",

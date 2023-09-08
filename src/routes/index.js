@@ -6,6 +6,7 @@ const viajeRoute = require('./getViaje');
 //const rolesRoute = require('./getByRol');
 const contratoRoute = require('./postContrato');
 const nuevoRoute = require('./postViaje')
+const selectRouten=require
 
 
 //router.use('/', rolesRoute)

@@ -3,7 +3,7 @@ const {Contract} = require('../models/index');
 const { Travel } = require('../models/index')
 
 // Función para crear un nuevo viaje (POST)
-const createViaje = async (req, res, t) => {
+const createViaje = async (req, res) => {
   try {
     const {
       hotel,
@@ -80,7 +80,7 @@ const updateContratos = async (req, res) => {
   } catch (error) {
     console.log("Algo salió mal al actualizar los contratos:", error);
 
-    // Deshace la transacción si ocurre un error
+    //Deshace la transacción si ocurre un error
     //await t.rollback();
     res.status(500).send({ mensaje: "Hubo un error al actualizar los contratos: ", error });
   }
