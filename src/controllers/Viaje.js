@@ -1,4 +1,4 @@
-const { Travel } = require('../models/index')
+const { Travel, Contract } = require('../models/index')
 
 const getAllViaje = async (req, res) => {
   try {
@@ -13,6 +13,27 @@ const getViajeById = async (req, res, next) => {
   try {
     const id = req.params.id
     const viaje = await Travel.findByPk(id)
+    res.send(viaje)
+  } catch (error) { console.log("Algo salio mal: ", error); 
+    throw error; //lanzo el error
+}
+}
+
+const getViajeByContract = async (req, res, next) => {
+  try {
+    const contract = req.params.contract;
+    //const rol = req.params.rol;
+    const contractFound = await Contract.findOne({
+      where: {
+        num: contract,
+      },
+    })
+    const travelId = contractFound.travelId
+    const viaje = await Travel.findOne({
+      where: {
+        id: travelId,
+      },
+    })
     res.send(viaje)
   } catch (error) { console.log("Algo salio mal: ", error); 
     throw error; //lanzo el error
@@ -49,6 +70,7 @@ module.exports = {
     getAllViaje,
     getViajeById,
     putViaje,
-    deleteViaje
+    deleteViaje,
+    getViajeByContract
 
 }

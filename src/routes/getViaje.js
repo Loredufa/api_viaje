@@ -4,6 +4,7 @@ const router = Router();
 
 router.get('/', getAllViaje)
 router.get('/:id', getViajeById)
+
 router.put('/:id', putViaje);
 router.delete('/:id', deleteViaje);
 

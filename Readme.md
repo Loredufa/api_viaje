@@ -1,6 +1,9 @@
 Esta api maneja todo lo relativo a la pantalla de inicio donde se muestran promociones de la empresa
 
 
+***Se agrega token en los Headers***
+
+
 **iniciar la api: npm start
 
 
@@ -30,28 +33,33 @@ GET: http://localhost:4001/contratos/select
 
 [num, num, num, num, num, num, num, num]
 
+
+Para consultar un viaje según el numero de contrato
+GET: http://localhost:4001/nuevoviaje/:num_contract
+
+
 Para dar de alta un viaje:
-PUT: http://localhost:4001/:id
+PUT: http://localhost:4001/viaje/:id
 
           "inicioViaje": "fecha de la activacion del viaje",
 
 
 Para actualizar la ubicacion
-PUT: http://localhost:4001/:id
+PUT: http://localhost:4001/viaje/:id
           "ultimaUbic": "coordenadas de la ultima ubcación",
 
 
 Para dar de baja un viaje
-PUT: http://localhost:4001/:id
+PUT: http://localhost:4001/viaje/:id
           "finViaje": "fecha en la que se finaliza el viaje",
 
 
 Para modificar el muro
-PUT: http://localhost:4001/:id
+PUT: http://localhost:4001/viaje/:id
           "muro": "[{imagen:url,idEmogi:contador}, {imagen:url,id},...]",
 
 
-GET by id: http://localhost:4001/viaje/id
+GET by id: http://localhost:4001/viaje/:id
 
 
 PUT http://localhost:4001/viaje/id

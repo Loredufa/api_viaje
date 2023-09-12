@@ -10,7 +10,7 @@ const expressJson = express.json();
 const bodyParser  = express.urlencoded({extended: true});
 
 //Headers
-app.use(express.urlencoded({extended:false, limit: "50mb"}));
+app.use(express.urlencoded({extended:true, limit: "50mb"}));
 app.use(express.json());
 app.use(morgan('dev'))
 app.use(setHeader)
