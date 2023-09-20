@@ -67,7 +67,7 @@ const updateContratos = async (req, res) => {
           );
         })
       );
-      res.send(putContratos);
+      res.send({putContratos, newViaje});
     } else {
       res.status(400).send({ mensaje: "Los contratos no son un array válido" });
     }

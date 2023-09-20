@@ -41,5 +41,4 @@ const addContrato = async (req,res) => {
     addContrato,
     getAllContratos,
     selectContratos
-
 }

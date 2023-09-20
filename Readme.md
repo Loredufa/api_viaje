@@ -54,23 +54,38 @@ PUT: http://localhost:4001/viaje/:id
           "finViaje": "fecha en la que se finaliza el viaje",
 
 
-Para modificar el muro
-PUT: http://localhost:4001/viaje/:id
-          "muro": "[{imagen:url,idEmogi:contador}, {imagen:url,id},...]",
-
-
 GET by id: http://localhost:4001/viaje/:id
 
 
 PUT http://localhost:4001/viaje/id
 
-
     body: { //info a modificar ej:
         "ultimaUbic": "2344.5566, 34453.666"
     }
 
-    
 DELETE http://localhost:4001/viaje/id
+
+***Muro***
+
+Para obtener la información del muro
+GET: http://localhost:4001/muro/num_contract
+
+
+Para subir una imagen al muro
+POST: http://localhost:4001/:num
+  body:
+      {
+        "image" : "url",
+        "texto" : "nckjzhcvsdhflsdj",
+      }
+    
+
+Para modificar el contador de la imagen
+PUT: http://localhost:4001/muro/:id
+      body: {
+              "emogi" : "{carita_feliz: 3, carita_triste : 1}"  
+            }
+
 
 
 Variable de entorno para el archivo .env
