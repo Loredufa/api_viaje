@@ -17,14 +17,16 @@ POST: http://localhost:4001/nuevoviaje   **Ver consideraciones **
 
 
         body: {  
+          "destino": "Tandil",
           "hotel": "Las palmeras",
           "ubicHotel": "Av los Patos 1943",          
           "fotosHotel": "url",
           "videoHotel": "url",
-          "estadia": "5 noches",
+          "ingreso": "15/08/23",
+          "salida": "22/08/23",
+          "pension": "completa",
           "cronograma": "???",
           "menu": "Texto",
-          "coordinador": "Pedro Sanchez",
           "contratos": "[num, num, num]"
         }
 **Consideraciones: La funcion no valida que los numeros de contrato sean correctos, para ello sugiero colocar un select para completar el campo "contratos", genere una ruta que trae todos los contratos ordenados de manera descendente**
