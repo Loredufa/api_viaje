@@ -42,18 +42,20 @@ GET: http://localhost:4001/nuevoviaje/:num_contract
 
 Para dar de alta un viaje:
 PUT: http://localhost:4001/viaje/:id
-
-          "inicioViaje": "fecha de la activacion del viaje",
+      body{
+          "inicioViaje": "fecha de la activacion del viaje"}
 
 
 Para actualizar la ubicacion
 PUT: http://localhost:4001/viaje/:id
-          "ultimaUbic": "coordenadas de la ultima ubcación",
+      body{
+          "ultimaUbic": "coordenadas de la ultima ubcación"}
 
 
 Para dar de baja un viaje
-PUT: http://localhost:4001/viaje/:id
-          "finViaje": "fecha en la que se finaliza el viaje",
+PUT: http://localhost:4001/viaje/:
+      body{
+          "finViaje": "fecha en la que se finaliza el viaje"}
 
 
 GET by id: http://localhost:4001/viaje/:id
