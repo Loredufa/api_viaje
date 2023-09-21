@@ -8,6 +8,8 @@ const Passengers = require('./Passenger')
 const Logins = require('./Login')
 const Walls = require('./Wall')
 const Fees = require('./Fee')
+const Fees = require('./Fee')
+const Schedules = require('./Schedule')
 
 const sequelize = new Sequelize(`postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`);
 
@@ -19,6 +21,7 @@ const Passenger = Passengers(sequelize)
 const Login = Logins(sequelize)
 const Wall = Walls(sequelize)
 const Fee = Fees(sequelize)
+const Schedule = Schedules(sequelize)
 
 
 //Relaciones
@@ -36,6 +39,9 @@ Wall.belongsTo (Travel, { foreignKey: 'travelId' }) // coloca TravelId en Wall
 Passenger.hasMany(Fee) 
 Fee.belongsTo (Passenger, { foreignKey: 'passengerId' }) // colocaPassengerId en Fee
 
+Travel.hasMany(Schedule) 
+Schedule.belongsTo (Travel, { foreignKey: 'travelId' }) // coloca travelId en schedule
+
 
 module.exports = {
     conn: sequelize,
@@ -47,5 +53,6 @@ module.exports = {
     Login,
     Wall,
     Fee,
+    Schedule,
     sequelize
 }
