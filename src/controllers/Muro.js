@@ -65,9 +65,38 @@ const upMuro = async (req, res) => {
 }
 
 
+const deleteMuro = async(req, res, next) => {
+  try {
+    const id = req.params.id
+    const deleteImage = await Wall.destroy({
+      where: {
+        id,
+      },
+    })
+    res.status(200).send({deleteImage, message: 'Imagen eliminada'});    
+
+  } catch (error) { console.log("Algo salio mal: ", error); 
+  throw error
+}
+}
+
+
+
+const deleteuro = (req, res, next) => {
+  const id = req.params.id
+  return Wall.destroy({
+    where: {
+      id,
+    },
+  }).then(() => {
+    res.sendStatus(200).json({message: 'Imagen eliminada'});
+  }).catch((error) => next(error))
+}
+
 
 module.exports = {
     getMuro,
     upMuro,
-    postMuro
+    postMuro,
+    deleteMuro
 }

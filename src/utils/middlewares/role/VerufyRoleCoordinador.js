@@ -1,4 +1,4 @@
-const { Login } = require('../../models/index');
+const { Login } = require('../../../models/index');
 
 
 
