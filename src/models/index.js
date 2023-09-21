@@ -1,20 +1,17 @@
 const {Sequelize} = require('sequelize')
 const {dbUser, dbName, dbPassword, dbHost} = require('../utils/config')
 const Travels = require('./Travel')
-const Excursions = require('./Excursion')
 const Landings = require('./Landing')
 const Contracts = require('./Contract')
 const Passengers = require('./Passenger')
 const Logins = require('./Login')
 const Walls = require('./Wall')
 const Fees = require('./Fee')
-const Fees = require('./Fee')
 const Schedules = require('./Schedule')
 
 const sequelize = new Sequelize(`postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`);
 
 const Travel = Travels(sequelize)
-const Excursion = Excursions(sequelize)
 const Landing = Landings(sequelize)
 const Contract = Contracts(sequelize)
 const Passenger = Passengers(sequelize)
@@ -46,7 +43,6 @@ Schedule.belongsTo (Travel, { foreignKey: 'travelId' }) // coloca travelId en sc
 module.exports = {
     conn: sequelize,
     Travel,
-    Excursion,
     Landing,
     Contract,
     Passenger,
