@@ -20,7 +20,7 @@ const getMuro = async (req, res) => {
       } else {res.status(404).send({message : 'Contrato no encontrado'})}
 
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+    //throw error; //lanzo el error
 }
 }
 
@@ -43,7 +43,7 @@ const postMuro = async (req, res) => {
           res.status(400).send({message: 'El contrato no existe'})
         }
       } catch (error) { console.log("Algo salio mal: ", error); 
-        throw error; //lanzo el error 
+        //throw error; //lanzo el error 
     }
 }
 
@@ -60,7 +60,7 @@ const upMuro = async (req, res) => {
           updateMuro? res.status(200).send({ message: 'Muro actualizado correctamente' }) :
           res.status(404).send({ message: 'Nose pudo actualizar el muro' }) 
         } catch (error) { console.log("Algo salio mal: ", error); 
-     throw error; //lanzo el error
+        //throw error; //lanzo el error
     }
 }
 
@@ -76,7 +76,7 @@ const deleteMuro = async(req, res, next) => {
     res.status(200).send({deleteImage, message: 'Imagen eliminada'});    
 
   } catch (error) { console.log("Algo salio mal: ", error); 
-  throw error
+    //throw error
 }
 }
 

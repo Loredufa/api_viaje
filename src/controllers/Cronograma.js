@@ -5,7 +5,7 @@ const getAllcronograma = async (req, res) => {
     const crono = await Schedule.findAll()
     res.status(200).send(crono) 
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+   // throw error; //lanzo el error
 }
 }
 
@@ -15,7 +15,7 @@ const getCronogramaById = async (req, res, next) => {
     const crono = await Schedule.findByPk(id)
     res.status(200).send(crono)
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+    //throw error; //lanzo el error
 }
 }
 
@@ -40,7 +40,7 @@ const getCronogramaByContract = async (req, res, next) => {
     }
     
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+    //throw error; //lanzo el error
 }
 }
 
@@ -65,7 +65,7 @@ const getCronogramaByIdViaje = async (req, res, next) => {
       }
       
     } catch (error) { console.log("Algo salio mal: ", error); 
-      throw error; //lanzo el error
+      //throw error; //lanzo el error
   }
   }
 
@@ -75,7 +75,7 @@ const getCronogramaByIdViaje = async (req, res, next) => {
       const newContrato = await Contract.create(contrato)
       res.send(newContrato);
     } catch (error) { console.log("Algo salio mal: ", error); 
-      throw error; //lanzo el error 
+      //throw error; //lanzo el error 
   }
   }
 
@@ -90,7 +90,7 @@ const putCronograma = async (req, res) => {
     })
     res.send(updateViaje)
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+    //throw error; //lanzo el error
 }
 }
 

@@ -30,13 +30,11 @@ const createViaje = async (req, res) => {
         coordinador,
         contratos
       },
-      //{ transaction: t }
     );
 
     return newViaje; // Devuelve el objeto del viaje creado
   } catch (error) {
     console.log("Algo salió mal al crear el viaje:", error);
-    throw error; // Lanza una excepción para desencadenar el rollback
   }
 };
 

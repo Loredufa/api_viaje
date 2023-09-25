@@ -5,7 +5,7 @@ const getAllViaje = async (req, res) => {
     const viaje = await Travel.findAll()
     res.status(200).send(viaje) 
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+    
 }
 }
 
@@ -15,7 +15,7 @@ const getViajeById = async (req, res, next) => {
     const viaje = await Travel.findByPk(id)
     res.send(viaje)
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+    
 }
 }
 
@@ -40,7 +40,7 @@ const getViajeByContract = async (req, res, next) => {
     }
     
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+   
 }
 }
 
@@ -55,7 +55,7 @@ const putViaje = async (req, res) => {
     })
     res.send(updateViaje)
   } catch (error) { console.log("Algo salio mal: ", error); 
-    throw error; //lanzo el error
+    
 }
 }
 
