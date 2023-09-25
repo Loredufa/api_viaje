@@ -44,31 +44,6 @@ const getCronogramaByContract = async (req, res, next) => {
 }
 }
 
-const getCronogramaByIdViaje = async (req, res, next) => {
-    try {
-      const contract = req.params.contract;
-      const contractFound = await Contract.findOne({
-        where: {
-          num: contract,
-        },
-      })
-      if (!contractFound) { 
-        res.status(404).send({message: 'Contrato no encontrado'})   
-      } else {
-        const travelId = contractFound.travelId
-        const viaje = await Travel.findOne({
-        where: {
-          id: travelId,
-        },
-      }) 
-      viaje? res.status(200).send(viaje) : res.status(404).send({message:'No se pudo crear el viaje'})
-      }
-      
-    } catch (error) { console.log("Algo salio mal: ", error); 
-      //throw error; //lanzo el error
-  }
-  }
-
   const addCronograma = async (req,res) => {
     try {
       const contrato = req.body
@@ -113,7 +88,6 @@ module.exports = {
     putCronograma,
     deleteCronograma,
     getCronogramaByContract,
-    getCronogramaByIdViaje,
     addCronograma
 
 }

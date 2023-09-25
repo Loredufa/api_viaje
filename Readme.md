@@ -91,6 +91,74 @@ PUT: http://localhost:4001/muro/:id
             }
 
 
+***Cronograma***
+Para dar de alta un día en el cronograma
+POST : http://localhost:4001/itinerario
+  body{
+    "fecha" : "nnn",
+    "excursion" : "xxxx",
+    "actividades" : "[xxx,xxx,xxx]",
+    "consideraciones" : "mnckdhfs"
+
+  }
+
+Obtener todas las fechas de cronograma
+GET : http://localhost:4001/itinerario
+
+Obtener cronograma por id
+GET : http://localhost:4001/itinerario/:id
+
+Obtener cronograma por contrato
+GET : http://localhost:4001/itinerario/:num_contrato
+
+Modificar cronograma
+PUT : http://localhost:4001/itinerario/id
+
+Eliminar el cronograma
+DELETE : http://localhost:4001/itinerario
+
+
+***Actividades***
+Para dar de alta una actividad
+POST : http://localhost:4001/actividad
+  body{
+    "nombre" : "nnn", **obligatorio**
+    "descripcion" : "xxxx"
+  }
+
+Obtener todas las actividades
+GET : http://localhost:4001/actividad
+
+Obtener actividad por id
+GET : http://localhost:4001/actividad/:id
+
+Modificar actividad
+PUT : http://localhost:4001/actividad/id
+
+Eliminar el actividad
+DELETE : http://localhost:4001/actividad
+
+
+***Excursiones***
+Para dar de alta una excursion
+POST : http://localhost:4001/excursion
+  body{
+    "nombre" : "nnn", **obligatorio**
+    "descripcion" : "xxxx"
+  }
+
+Obtener todas las excursiones
+GET : http://localhost:4001/excursion
+
+Obtener excursion por id
+GET : http://localhost:4001/excursion/:id
+
+Modificar excursion
+PUT : http://localhost:4001/actividad/id
+
+Eliminar el actividad
+DELETE : http://localhost:4001/excursion
+
 
 Variable de entorno para el archivo .env
 
