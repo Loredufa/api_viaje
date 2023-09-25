@@ -87,7 +87,7 @@ POST: http://localhost:4001/:num
 Para modificar el contador de la imagen
 PUT: http://localhost:4001/muro/:id
       body: {
-              "emogi" : "{carita_feliz: 3, carita_triste : 1}"  
+              "emoji" : "{carita_feliz: 3, carita_triste : 1}"  
             }
 
 
