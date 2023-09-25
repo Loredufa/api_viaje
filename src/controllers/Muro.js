@@ -81,19 +81,6 @@ const deleteMuro = async(req, res, next) => {
 }
 
 
-
-const deleteuro = (req, res, next) => {
-  const id = req.params.id
-  return Wall.destroy({
-    where: {
-      id,
-    },
-  }).then(() => {
-    res.sendStatus(200).json({message: 'Imagen eliminada'});
-  }).catch((error) => next(error))
-}
-
-
 module.exports = {
     getMuro,
     upMuro,

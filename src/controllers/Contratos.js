@@ -6,7 +6,6 @@ const addContrato = async (req,res) => {
       const newContrato = await Contract.create(contrato)
       res.send(newContrato);
     } catch (error) { console.log("Algo salio mal: ", error); 
-      //throw error; //lanzo el error 
   }
   }
 

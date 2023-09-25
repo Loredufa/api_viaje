@@ -9,6 +9,17 @@ const getAllExcursiones = async (req, res) => {
 }
 }
 
+const addExcursion = async (req,res) => {
+  try {
+    const exc = req.body
+    const newExc = await Excursion.create(exc)
+    res.send(newExc);
+  } catch (error) { console.log("Algo salio mal: ", error); 
+    //throw error; //lanzo el error 
+}
+}
+
+
 const getExcursionById = async (req, res, next) => {
   try {
     const id = req.params.id
@@ -28,7 +39,9 @@ const putExcursion = async (req, res) => {
         id,
       },
     })
-    res.send(updateExc)
+    updateExc[0] !== 0? res.status(200).send({message:'Excursión actualizada'}) : 
+    res.status(401).send({message:'No se puede actualizar la excursion'});
+    
   } catch (error) { console.log("Algo salio mal: ", error); 
     
 }
@@ -49,6 +62,7 @@ module.exports = {
     getAllExcursiones,
     getExcursionById,
     putExcursion,
+    addExcursion,
     deleteExcursion
 
 }

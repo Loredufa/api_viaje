@@ -26,7 +26,8 @@ const putActividad = async (req, res) => {
         id,
       },
     })
-    res.send(updateAct)
+    updateAct[0] !== 0? res.status(200).send({message:'Actividad actualizada'}) : 
+    res.status(401).send({message:'No se puede actualizar la actividad'});
   } catch (error) { console.log("Algo salio mal: ", error); 
     
 }

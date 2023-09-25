@@ -53,7 +53,8 @@ const putViaje = async (req, res) => {
         id,
       },
     })
-    res.send(updateViaje)
+    updateViaje[0] !== 0? res.status(200).send({message:'Viaje actualizado'}) : 
+    res.status(401).send({message:'No se puede actualizar el viaje'});
   } catch (error) { console.log("Algo salio mal: ", error); 
     
 }

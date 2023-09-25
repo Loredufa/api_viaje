@@ -88,7 +88,9 @@ const putCronograma = async (req, res) => {
         id,
       },
     })
-    res.send(updateViaje)
+    updateViaje[0] !== 0? res.status(200).send({message:'Cronograma actualizado'}) : 
+    res.status(401).send({message:'No se puede actualizar el cronograma'});
+
   } catch (error) { console.log("Algo salio mal: ", error); 
     //throw error; //lanzo el error
 }
