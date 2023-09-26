@@ -32,8 +32,7 @@ const postMuro = async (req, res) => {
           where: {
             num: num,
           },
-        })
-  
+        }) 
         if (contractFound) {
         const travelId = contractFound.travelId
         const completedMuro = {...muro, travelId: travelId}
@@ -58,12 +57,28 @@ const upMuro = async (req, res) => {
             },
           })
           updateMuro? res.status(200).send({ message: 'Muro actualizado correctamente' }) :
-          res.status(404).send({ message: 'Nose pudo actualizar el muro' }) 
+          res.status(404).send({ message: 'No se pudo actualizar el muro' }) 
         } catch (error) { console.log("Algo salio mal: ", error); 
         //throw error; //lanzo el error
     }
 }
 
+const upEmoji = async (req, res) => {
+  try {
+    const id = req.params.id
+    const up = req.body  //[{}]
+     //actualizo en la bd
+      const updateMuro = await Wall.update(up, {
+          where: {
+            id : id,
+          },
+        })
+        updateMuro? res.status(200).send({ message: 'Muro actualizado correctamente' }) :
+        res.status(404).send({ message: 'Nose pudo actualizar el muro' }) 
+      } catch (error) { console.log("Algo salio mal: ", error); 
+      //throw error; //lanzo el error
+  }
+}
 
 const deleteMuro = async(req, res, next) => {
   try {

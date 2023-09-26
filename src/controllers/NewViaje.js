@@ -6,39 +6,36 @@ const { Travel } = require('../models/index')
 const createViaje = async (req, res) => {
   try {
     const {
+      destino,
       hotel,
       ubicHotel,
       fotosHotel,
       videoHotel,
-      estadia,
-      cronograma,
-      menu,
-      coordinador,
-      contratos,
+      ingreso,
+      salida,
+      contratos
     } = req.body;
 
     // Crea el nuevo viaje y obtiene su ID
     const newViaje = await Travel.create(
       {
+        destino,
         hotel,
         ubicHotel,
         fotosHotel,
         videoHotel,
-        estadia,
-        cronograma,
-        menu,
-        coordinador,
+        ingreso,
+        salida,
         contratos
       },
     );
-
-    return newViaje; // Devuelve el objeto del viaje creado
+    newViaje? res.status(200).send(newViaje) : res.status(401).send({message: 'Nose pudo cargar el viaje'});
   } catch (error) {
     console.log("Algo salió mal al crear el viaje:", error);
   }
 };
 
-// Función para actualizar contratos con el ID del viaje creado (PUT)
+// Función para actualizar la tabla contratos con el ID del viaje creado (PUT)
 const updateContratos = async (req, res) => {
   try {
     const contratos = JSON.parse(req.body.contratos);
