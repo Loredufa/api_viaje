@@ -13,7 +13,7 @@ const getViajeById = async (req, res, next) => {
   try {
     const id = req.params.id
     const viaje = await Travel.findByPk(id)
-    res.send(viaje)
+    viaje? res.status(200).send(viaje) : res.status(401).send({message:'No se pudo encontrar el viaje'})
   } catch (error) { console.log("Algo salio mal: ", error); 
     
 }
@@ -60,15 +60,19 @@ const putViaje = async (req, res) => {
 }
 }
 
-const deleteViaje = (req, res, next) => {
+const deleteViaje = async (req, res, next) => {
+  try {
   const id = req.params.id
-  return Travel.destroy({
+  const deleteTravel = await Travel.destroy({
     where: {
       id,
     },
-  }).then(() => {
-    res.sendStatus(200)
-  }).catch((error) => next(error))
+  })
+  deleteTravel? res.status(200).send({message:'Viaje eliminado'}) :
+  res.status(401).send({message:'No se pudo eliminar el viaje'}) 
+  }
+  catch (error) { console.log("Algo salio mal: ", error); 
+}
 }
 
 module.exports = {

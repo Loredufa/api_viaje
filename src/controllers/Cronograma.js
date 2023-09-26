@@ -13,7 +13,7 @@ const getCronogramaById = async (req, res, next) => {
   try {
     const id = req.params.id
     const crono = await Schedule.findByPk(id)
-    res.status(200).send(crono)
+    crono? res.status(200).send(crono) : res.status(401).send({ message: 'El id del cronograma no existe' })
   } catch (error) { console.log("Algo salio mal: ", error); 
     //throw error; //lanzo el error
 }
@@ -36,19 +36,29 @@ const getCronogramaByContract = async (req, res, next) => {
         id: travelId,
       },
     }) 
-    viaje? res.status(200).send(viaje) : res.status(404).send({message:'No se pudo crear el viaje'})
+    if (!viaje) {res.status(404).send({message:'No se encontro el viaje para ese contrato'})}
+    else {
+    const scheduleId = viaje.scheduleId
+    const crono = await Schedule.findOne({
+      where: {
+        id: scheduleId,
+      },
+    }) 
+    crono? res.status(200).send(crono) : res.status(404).send({message:'No se encontro el itinerario'})
     }
     
-  } catch (error) { console.log("Algo salio mal: ", error); 
+  }} catch (error) { console.log("Algo salio mal: ", error); 
     //throw error; //lanzo el error
 }
 }
 
+
   const addCronograma = async (req,res) => {
     try {
-      const contrato = req.body
-      const newContrato = await Contract.create(contrato)
-      res.send(newContrato);
+      const crono = req.body
+      const newCronograma = await Schedule.create(crono)
+      newCronograma? res.status(200).send({message:'Se agregó el itinerario'}) : 
+      res.status(404).send({message:'No se pudo agregar el itinerario'})
     } catch (error) { console.log("Algo salio mal: ", error); 
       //throw error; //lanzo el error 
   }
@@ -57,13 +67,13 @@ const getCronogramaByContract = async (req, res, next) => {
 const putCronograma = async (req, res) => {
   try {
     const id = req.params.id
-    const viaje = req.body
-    const updateViaje = await Travel.update(viaje, {
+    const crono = req.body
+    const updateCrono = await Schedule.update(crono, {
       where: {
         id,
       },
     })
-    updateViaje[0] !== 0? res.status(200).send({message:'Cronograma actualizado'}) : 
+    updateCrono[0] !== 0? res.status(200).send({message:'Cronograma actualizado'}) : 
     res.status(401).send({message:'No se puede actualizar el cronograma'});
 
   } catch (error) { console.log("Algo salio mal: ", error); 
@@ -71,15 +81,19 @@ const putCronograma = async (req, res) => {
 }
 }
 
-const deleteCronograma = (req, res, next) => {
+const deleteCronograma = async (req, res, next) => {
+  try {
   const id = req.params.id
-  return Travel.destroy({
+  const deleteCrono = await Schedule.destroy({
     where: {
       id,
     },
-  }).then(() => {
-    res.sendStatus(200)
-  }).catch((error) => next(error))
+  })
+  deleteCrono? res.status(200).send({message:'Cronograma eliminado'}) :
+  res.status(401).send({message:'No se pudo eliminar el cronograma'}) 
+  }
+  catch (error) { console.log("Algo salio mal: ", error); 
+}
 }
 
 module.exports = {

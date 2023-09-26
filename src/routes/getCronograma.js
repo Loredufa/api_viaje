@@ -1,12 +1,13 @@
 const { Router } = require('express');
-const {getAllcronograma, getCronogramaById} = require('../controllers/Cronograma');
+const {getAllcronograma, getCronogramaById, getCronogramaByContract, addCronograma, putCronograma, deleteCronograma} = require('../controllers/Cronograma');
 const router = Router();
 
 router.get('/', getAllcronograma)
 router.get('/:id', getCronogramaById)
-//router.put('/:id', upMuro)
-//router.post('/:num', postMuro)
-//router.delete('/:id', deleteMuro)
+router.get('/:num', getCronogramaByContract)
+router.put('/:id', putCronograma)
+router.post('/', addCronograma)
+router.delete('/:id', deleteCronograma)
 
 
 module.exports = router;

@@ -16,7 +16,11 @@ const getMuro = async (req, res) => {
           travelId : travelId,     
         },
       })
-      res.status(200).send(viaje)
+      if (viaje) {const muro = viaje.sort((a, b) =>{a-b})    
+      res.status(200).send(muro)} 
+      else {
+        res.status(401).send({message:'No se encontraron publicaciones'})}
+
       } else {res.status(404).send({message : 'Contrato no encontrado'})}
 
   } catch (error) { console.log("Algo salio mal: ", error); 
@@ -37,7 +41,7 @@ const postMuro = async (req, res) => {
         const travelId = contractFound.travelId
         const completedMuro = {...muro, travelId: travelId}
         const newMuro = await Wall.create(completedMuro)
-        newMuro? res.status(200).send(newMuro) : res.status(404).send({message: 'No se pudo actualizar el muro'})
+        newMuro? res.status(200).send(newMuro) : res.status(401).send({message: 'No se pudo actualizar el muro'})
         }else {
           res.status(400).send({message: 'El contrato no existe'})
         }
@@ -66,7 +70,8 @@ const upMuro = async (req, res) => {
 const upEmoji = async (req, res) => {
   try {
     const id = req.params.id
-    const up = req.body  //[{}]
+    const up = req.body  //[{emoji:1}]
+
      //actualizo en la bd
       const updateMuro = await Wall.update(up, {
           where: {
@@ -80,7 +85,7 @@ const upEmoji = async (req, res) => {
   }
 }
 
-const deleteMuro = async(req, res, next) => {
+const deleteMuro = async(req, res) => {
   try {
     const id = req.params.id
     const deleteImage = await Wall.destroy({
@@ -88,7 +93,8 @@ const deleteMuro = async(req, res, next) => {
         id,
       },
     })
-    res.status(200).send({deleteImage, message: 'Imagen eliminada'});    
+    deleteImage? res.status(200).send({deleteImage, message: 'Imagen eliminada'}) :
+    res.status(401).send({deleteImage, message: 'No se pudo eliminar la imagen'})
 
   } catch (error) { console.log("Algo salio mal: ", error); 
     //throw error
