@@ -18,12 +18,13 @@ const addContrato = async (req,res) => {
         res.status(404).send({ mensaje: "Contratos no encontrado" });
       }
     } catch (error) { console.log("Algo salio mal: ", error); 
-      throw error; //lanzo el error
+  
   }
   }
 
   const selectContratos = async (req, res) => {
     try {
+      console.log("hola mundo");
       const contrato = await Contract.findAll()
       if (contrato) {
         const contratos = contrato.map((contr) => contr.num).sort((a, b) => b - a)

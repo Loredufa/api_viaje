@@ -1,4 +1,4 @@
-const { Travel, Contract, Wall} = require('../models/index')
+const { Contract, Wall} = require('../models/index')
 
 //Obtiene los valores de la tabla muro de manera descendente para un contrato determinado
 const getMuro = async (req, res) => {
@@ -89,7 +89,6 @@ const upEmoji = async (req, res) => {
         id,
       },
     });
-
     if (!publicacion) {
       res.status(401).send({ message: 'No existe la publicación' });
       return;
@@ -120,7 +119,6 @@ const upEmoji = async (req, res) => {
         },
       }
     );
-
     if (updateMuro[0] !== 0) {
       res.status(200).send({ message: 'Muro actualizado correctamente' });
     } else {
