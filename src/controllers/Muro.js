@@ -1,32 +1,38 @@
 const { Travel, Contract, Wall} = require('../models/index')
 
-
+//Obtiene los valores de la tabla muro de manera descendente para un contrato determinado
 const getMuro = async (req, res) => {
   try {
-    const num = req.params.num
+    const num = req.params.num;
     const contractFound = await Contract.findOne({
-        where: {
-          num: num,
-        },
-      })
-      if (contractFound) {
-      const travelId = contractFound.travelId 
+      where: {
+        num: num,
+      },
+    });
+
+    if (contractFound) {
+      const travelId = contractFound.travelId;
       const viaje = await Wall.findAll({
         where: {
-          travelId : travelId,     
+          travelId: travelId,
         },
-      })
-      if (viaje) {const muro = viaje.sort((a, b) =>{a-b})    
-      res.status(200).send(muro)} 
-      else {
-        res.status(401).send({message:'No se encontraron publicaciones'})}
+        order: [['createdAt', 'DESC']], // Ordena por createdAt en orden descendente
+      });
 
-      } else {res.status(404).send({message : 'Contrato no encontrado'})}
+      if (viaje) {
+        res.status(200).send(viaje); // Envía el resultado ordenado
+      } else {
+        res.status(401).send({ message: 'No se encontraron publicaciones' });
+      }
+    } else {
+      res.status(404).send({ message: 'Contrato no encontrado' });
+    }
+  } catch (error) {
+    console.log("Algo salió mal: ", error);
+    res.status(500).send({ message: 'Hubo un error en el servidor' });
+  }
+};
 
-  } catch (error) { console.log("Algo salio mal: ", error); 
-    //throw error; //lanzo el error
-}
-}
 
 const postMuro = async (req, res) => {
       try {

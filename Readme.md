@@ -8,7 +8,7 @@ Esta api maneja todo lo relativo a la pantalla de inicio donde se muestran promo
 
 
 **Rutas :
-
+**Viaje**
 
 GET: http://localhost:4001/viaje
 
@@ -18,17 +18,11 @@ POST: http://localhost:4001/nuevoviaje   **Ver consideraciones **
 
         body: {  
           "destino": "Tandil",
-          "hotel": "Las palmeras",
-          "ubicHotel": "Av los Patos 1943",          
-          "fotosHotel": "url",
-          "videoHotel": "url",
-          "ingreso": "15/08/23",
-          "salida": "22/08/23",
-          "pension": "completa",
-          "cronograma": "???",
-          "menu": "Texto",
-          "contratos": "[num, num, num]"
+          "contratos": "[num, num, num]",
+          "hotelId": "x",
+          "scheduleId": "x"
         }
+        
 **Consideraciones: La funcion no valida que los numeros de contrato sean correctos, para ello sugiero colocar un select para completar el campo "contratos", genere una ruta que trae todos los contratos ordenados de manera descendente**
 
 GET: http://localhost:4001/contratos/select
@@ -64,7 +58,7 @@ GET by id: http://localhost:4001/viaje/:id
 PUT http://localhost:4001/viaje/id
 
     body: { //info a modificar ej:
-        "ultimaUbic": "2344.5566, 34453.666"
+        "destino": "Valle de la luna"
     }
 
 DELETE http://localhost:4001/viaje/id
@@ -73,6 +67,8 @@ DELETE http://localhost:4001/viaje/id
 
 Para obtener la información del muro
 GET: http://localhost:4001/muro/num_contract
+
+Ordena el resultado de manera descendente
 
 
 Para subir una imagen al muro
@@ -84,10 +80,10 @@ POST: http://localhost:4001/:num
       }
     
 
-Para modificar el contador de la imagen
+Para agregar emojis a la imagen con id de imagen
 PUT: http://localhost:4001/muro/:id
       body: {
-              "emoji" : "{carita_feliz: 3, carita_triste : 1}"  
+              "emoji" : "carita_feliz"  
             }
 
 
