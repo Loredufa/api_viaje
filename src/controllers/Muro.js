@@ -9,9 +9,10 @@ const getMuro = async (req, res) => {
         num: num,
       },
     });
-
+  //Busco el contrato para obtener el id de viaje realcionado
     if (contractFound) {
       const travelId = contractFound.travelId;
+  //Busco todas las publicaciones relacionadas con el id de viaje
       const viaje = await Wall.findAll({
         where: {
           travelId: travelId,
@@ -36,7 +37,7 @@ const getMuro = async (req, res) => {
 //Crea una publicacion con una o varias imagenes o videos
 const postMuro = async (req, res) => {
       try {
-        const muro = req.body
+        const muro = req.body  // estructura del body {image: [url,url,url], texto: 'abc'}
         const num = req.params.num
         const contractFound = await Contract.findOne({
           where: {
@@ -45,21 +46,19 @@ const postMuro = async (req, res) => {
         }) 
         if (contractFound) {
         const travelId = contractFound.travelId
-        //Confirmo que muro sea un array
-
-        //Si no es un array
+        //Agrego id de viaje para crear la publicacion en la bd
         const completedMuro = {...muro, travelId: travelId}
+        //Guardo la publicacion en la bd
         const newMuro = await Wall.create(completedMuro)
         newMuro? res.status(200).send(newMuro) : res.status(401).send({message: 'No se pudo actualizar el muro'})
         }else {
           res.status(400).send({message: 'El contrato no existe'})
         }
-        // Si es array
       } catch (error) { console.log("Algo salio mal: ", error); 
-        //throw error; //lanzo el error 
     }
 }
 
+//Actulizar una publicacion (puede ser una imagen o el texto)
 const upMuro = async (req, res) => {
     try {
       const id = req.params.id
@@ -77,6 +76,7 @@ const upMuro = async (req, res) => {
     }
 }
 
+//Actualizar las reacciones de los usuarios en la bd
 const upEmoji = async (req, res) => {
   try {
     const id = req.params.id;
@@ -111,7 +111,7 @@ const upEmoji = async (req, res) => {
         }
       }
     }
-
+    //Actualizo la info en la bd
     const updateMuro = await Wall.update(
       { emoji: JSON.stringify(emojis) }, // Convierte el array emojis en una cadena JSON
       {
@@ -132,7 +132,7 @@ const upEmoji = async (req, res) => {
   }
 };
 
-
+//Eliminar una publicacion
 const deleteMuro = async(req, res) => {
   try {
     const id = req.params.id
@@ -145,8 +145,7 @@ const deleteMuro = async(req, res) => {
     res.status(401).send({deleteImage, message: 'No se pudo eliminar la imagen'})
 
   } catch (error) { console.log("Algo salio mal: ", error); 
-    //throw error
-}
+   
 }
 
 
