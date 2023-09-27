@@ -7,6 +7,7 @@ const nuevoRoute = require('./postViaje');
 const muroRoute = require('./getMuro');
 const cronoRoute = require('./getCronograma');
 const hotelRoute = require('./getHoteles');
+const emojiRoute = require('./upEmoji');
 const verifyToken = require('../utils/middlewares/verifyToken');
 
 
@@ -17,6 +18,7 @@ router.use('/contrato', verifyToken, contratoRoute)
 router.use('/muro', verifyToken, muroRoute)
 router.use('/itinerario', verifyToken, cronoRoute)
 router.use('/hoteles', verifyToken, hotelRoute)
+router.use('/reaccion', verifyToken, emojiRoute)
 
 
 

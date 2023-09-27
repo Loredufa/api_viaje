@@ -80,10 +80,10 @@ POST: http://localhost:4001/:num
       }
     
 
-Para agregar emojis a la imagen con id de imagen
-PUT: http://localhost:4001/muro/:id
+Para agregar emojis a la imagen con id de la publicacion
+PUT: http://localhost:4001/reaccion/id
       body: {
-              "emoji" : "carita_feliz"  
+              "emoji" : "carita_feliz"  //colocar en el valor de la propiedad emoji el dato que identifica el emoji
             }
 
 
