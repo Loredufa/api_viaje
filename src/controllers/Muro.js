@@ -147,6 +147,7 @@ const deleteMuro = async(req, res) => {
   } catch (error) { console.log("Algo salio mal: ", error); 
    
 }
+}
 
 
 module.exports = {
