@@ -24,18 +24,30 @@ const addContrato = async (req,res) => {
 
   const selectContratos = async (req, res) => {
     try {
-      console.log("hola mundo");
-      const contrato = await Contract.findAll()
-      if (contrato) {
-        const contratos = contrato.map((contr) => contr.num).sort((a, b) => b - a)
-        res.send(contratos);
+      const contratos = await Contract.findAll();
+      if (contratos.length > 0) {
+        // Ordena los contratos en orden descendente según el campo 'num'
+        const contratosOrdenados = contratos
+          .slice() // Hacemos una copia para no modificar el array original
+          .sort((a, b) => b.num - a.num);
+  
+        // Mapea los contratos para incluir el campo 'colegio'
+        const contratosConColegio = contratosOrdenados.map((contrato) => ({
+          num: contrato.num,
+          colegio: contrato.colegio,
+        }));
+  
+        res.status(200).send(contratosConColegio);
       } else {
         res.status(404).send({ mensaje: "No hay ningún contrato" });
       }
-    } catch (error) { console.log("Algo salio mal: ", error); 
-      //throw error; //lanzo el error
-  }
-  }
+    } catch (error) {
+      console.log("Algo salió mal: ", error);
+      // Manejo de errores
+      res.status(500).send({ mensaje: "Ocurrió un error interno" });
+    }
+  };
+  
 
   module.exports = {
     addContrato,

@@ -1,5 +1,4 @@
-Esta api maneja todo lo relativo a la pantalla de inicio donde se muestran promociones de la empresa
-
+Esta api maneja todo lo relativo a al viaje, su muro, los hoteles y el itinerario.
 
 ***Se agrega token en los Headers***
 
@@ -27,7 +26,18 @@ POST: http://localhost:4001/nuevoviaje   **Ver consideraciones **
 
 GET: http://localhost:4001/select
 
-[num, num, num, num, num, num, num, num]
+[{
+    "num": "9999",
+    "colegio": "San Jose"
+  },
+  {
+    "num": "7777",
+    "colegio": "San Benito"
+  },
+  {
+    "num": "4444",
+    "colegio": "Nacional N 6"
+  }]
 
 
 Para consultar un viaje según el numero de contrato
@@ -46,8 +56,8 @@ PUT: http://localhost:4001/viaje/:id
           "ultimaUbic": "coordenadas de la ultima ubcación"}
 
 
-Para dar de baja un viaje
-PUT: http://localhost:4001/viaje/:
+Para dar de finalizar un viaje
+PUT: http://localhost:4001/viaje/:id
       body{
           "finViaje": "fecha en la que se finaliza el viaje"}
 
@@ -91,14 +101,11 @@ PUT: http://localhost:4001/reaccion/id
 Para dar de alta un día en el cronograma
 POST : http://localhost:4001/itinerario
   body{
-    "fecha" : "nnn",
-    "excursion" : "xxxx",
-    "actividades" : "[xxx,xxx,xxx]",
-    "consideraciones" : "mnckdhfs"
+  "nombre":"Tandil, 3 dias 2 noches",
+  "texto_gral": "fzngñkjdfngkjdfngkñjfnkjfadn"
+}
 
-  }
-
-Obtener todas las fechas de cronograma
+Obtener todos los cronogramas
 GET : http://localhost:4001/itinerario
 
 Obtener cronograma por id
@@ -114,6 +121,70 @@ Eliminar el cronograma
 DELETE : http://localhost:4001/itinerario
 
 
+**Hotel**
+
+Para dar de obtener todos los hoteles
+GET: http://localhost:4001/hoteles
+
+Para dar de alta un Hotel
+POST: http://localhost:4001/hoteles
+body : {
+        "nombre": "Los pepinos",
+        "direccion": "Av. los patos 6543",
+        "fotos":"url",
+        "video": "url"
+      }
+
+Para obtener los hoteles por id hotel
+GET: http://localhost:4001/hoteles/:id
+
+Para Modificar la info de un hotel
+PUT: http://localhost:4001/hoteles/:id
+
+Para eliminar un hotel
+DELETE: http://localhost:4001/hoteles/:id
+
+**Contratos**
+Esta tabla no se modifican dentro de la api pero son necesarias para completar el flujo de datos
+
+Para dar de alta un contrato
+POST: http://localhost:4001/hoteles
+body 
+  {
+  "num":"1919",
+  "fecha":"14/06/23",
+  "curso":"7mo",
+  "division":"B",
+  "turno":"Mañana",
+  "colegio":"San Jose",
+  "pasajeros":"28",
+  "mes":"noviembre",
+  "año":"2024",
+  "periodo":"3",
+  "destino":"Tandil",
+  "impTot":"700mil",
+  "canc":"si"
+}
+
+Para obtener todos los contratos
+GET: http://localhost:4001/hoteles
+
+Para el select de contratos
+GET: http://localhost:4001/select
+
+Retorna: [
+  {
+    "num": "9999",
+    "colegio": "San Jose"
+  },
+  {
+    "num": "7777",
+    "colegio": "San Jose"
+  },
+  {
+    "num": "4444",
+    "colegio": "San Jose"
+  }]
 
 
 PORT='4001'
