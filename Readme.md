@@ -19,7 +19,9 @@ POST: http://localhost:4001/nuevoviaje   **Ver consideraciones **
           "destino": "Tandil",
           "contratos": "[num, num, num]",
           "hotelId": "x",
-          "scheduleId": "x"
+          "scheduleId": "x",
+          "salida": "x",
+          "regreso": "x",
         }
         
 **Consideraciones: La funcion no valida que los numeros de contrato sean correctos, para ello sugiero colocar un select para completar el campo "contratos", genere una ruta que trae todos los contratos ordenados de manera descendente**
