@@ -9,7 +9,9 @@ const createViaje = async (req, res) => {
       destino,
       contratos,
       hotelId,
-      scheduleId
+      scheduleId,
+      salida,
+      regreso
     } = req.body;
 
     // Crea el nuevo viaje y obtiene su ID
@@ -17,7 +19,9 @@ const createViaje = async (req, res) => {
       destino,
       contratos,
       hotelId,
-      scheduleId
+      scheduleId,
+      salida,
+      regreso
     });
 
     if (newViaje) {
@@ -36,11 +40,10 @@ const createViaje = async (req, res) => {
     res.status(500).send({ mensaje: "Hubo un error al crear el viaje", error });
   }
 };
-
+//contemplar que el put sea fallido
 const updateContratos = async (req, res, travelId) => {
   try {
     const contratos = JSON.parse(req.body.contratos);
-
     if (Array.isArray(contratos)) {
       const putContratos = await Promise.all(
         contratos.map(async (el) => {
@@ -55,7 +58,7 @@ const updateContratos = async (req, res, travelId) => {
           );
         })
       );
-      res.send({ putContratos, travelId });
+    res.send({ putContratos, travelId });
     } else {
       res.status(400).send({ mensaje: "Los contratos no son un array válido" });
     }
@@ -64,7 +67,6 @@ const updateContratos = async (req, res, travelId) => {
     res.status(500).send({ mensaje: "Hubo un error al actualizar los contratos", error });
   }
 };
-
 
 module.exports = {
   createViaje

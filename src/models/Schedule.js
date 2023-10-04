@@ -9,12 +9,12 @@ module.exports = function(sequelize) {
       autoIncrement: true,
       primaryKey: true
     },
-    nombre: {
+    nombre: {                   //Tandil 3dias
       type: DataTypes.STRING,
       allowNull: false,
     },
     texto_gral: {
-      type:DataTypes.STRING,
+      type:DataTypes.STRING,    //[{titulo:xxx, descripción:xxx}, {titulo:xxx, descripción:xxx}]
       allowNull:true,
     }
   })
