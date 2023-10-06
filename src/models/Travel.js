@@ -12,7 +12,7 @@ module.exports = function(sequelize) {
     destino: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
+      },
     salida: {
       type:DataTypes.STRING,
       allowNull:true,

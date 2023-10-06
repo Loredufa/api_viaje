@@ -133,8 +133,14 @@ POST: http://localhost:4001/hoteles
 body : {
         "nombre": "Los pepinos",
         "direccion": "Av. los patos 6543",
+        "telefono": "133577752",
         "fotos":"url",
-        "video": "url"
+        "video": "url",
+        "instagram": "instagram",
+        "facebook": "facebook",
+        "twitter": "twitter",
+        "linkedin": "linkedin",
+        "otra_red": "otra_red",
       }
 
 Para obtener los hoteles por id hotel
