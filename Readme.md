@@ -75,6 +75,22 @@ PUT http://localhost:4001/viaje/id
 
 DELETE http://localhost:4001/viaje/id
 
+***Formulario de contacto***
+
+POST http://localhost:4001/contacto
+    body: {
+      "nombre": "Jazmin",
+      "mail": "jdn@gmail.com",
+      "telefono": "2323-9897",
+      "comentario": "9xnckdhfudfhgiudfhgkjxbvkdzhgfuidhgkuhdfkvbmxc",
+      "horario": "9 a 18"
+    }
+
+
+GET http://localhost:4001/contacto
+
+
+
 ***Muro***
 
 Para obtener la información del muro
