@@ -8,6 +8,5 @@ module.exports = {
     dbHost : process.env.DB_HOST,
     host : process.env.HOST,
     PORT : process.env.PORT,
-    secretKey : process.env.SECRET_KEY,
-    mailPass: process.env.MAIL_PASSWORD
+    secretKey : process.env.SECRET_KEY
 }
