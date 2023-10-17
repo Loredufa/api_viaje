@@ -9,6 +9,7 @@ const {conn} = require('./src/models')
 const {PORT} = require('./src/utils/config/index')
 const expressJson = express.json(); 
 const bodyParser  = express.urlencoded({extended: true});
+require("dotenv").config();
 
 //Headers
 app.use(cors())

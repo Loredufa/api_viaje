@@ -9,6 +9,7 @@ const cronoRoute = require('./getCronograma');
 const hotelRoute = require('./getHoteles');
 const emojiRoute = require('./upEmoji');
 const selectRoute = require('./getSelect');
+const spacesRoute = require('./getSpacesFile');
 const verifyToken = require('../utils/middlewares/verifyToken');
 
 
@@ -21,6 +22,7 @@ router.use('/itinerario', verifyToken, cronoRoute)
 router.use('/hoteles', verifyToken, hotelRoute)
 router.use('/reaccion', verifyToken, emojiRoute)
 router.use('/select', verifyToken, selectRoute)
+router.use('/spaces', spacesRoute)
 
 
 

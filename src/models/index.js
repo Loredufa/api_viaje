@@ -34,7 +34,13 @@ Travel.hasMany(Contract)
 Contract.belongsTo(Travel, { foreignKey: 'travelId' }); // coloca travelId en contract
 
 Contract.hasMany(Passenger)
-Passenger.belongsTo (Contract) // coloca Contract_id en Passenger
+Passenger.belongsTo (Contract) // coloca Contract_id en Passenger CAMBIAR DE MUCHOS S MUCHOS
+
+//Un usuario tiene muchos pasajeros
+//Un pasajero pertenece a muchos usuarios
+
+//Un pasajero tiene muchos contratos
+//Un contrato tiene muchos pasajeros 
 
 Travel.hasMany(Wall)
 Wall.belongsTo (Travel, { foreignKey: 'travelId' }) // coloca TravelId en Wall
