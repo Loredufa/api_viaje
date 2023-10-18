@@ -10,6 +10,8 @@ const {PORT} = require('./src/utils/config/index')
 const expressJson = express.json(); 
 const bodyParser  = express.urlencoded({extended: true});
 require("dotenv").config();
+const fileUpload = require('express-fileupload')
+
 
 //Headers
 app.use(cors())
@@ -20,12 +22,17 @@ app.use(setHeader)
 
 app.use([expressJson, bodyParser])
 
+//control de errores
+app.use(errorHandler)
+
+app.use(fileUpload({
+  tempFileDir: '/temp'
+}))
 
 //Rutas
 app.use('/', routes);
 
-//control de errores
-app.use(errorHandler)
+
 
 
 //Servidor

@@ -21,11 +21,11 @@ const upload = multer ({
             })
         },
         key:(req, file, cb) => {
-            console.log(file)
+            console.log('SOY FILE', file)
             cb(null, file.originalname);
         }
 })
-}).array('upload')
+}).single('upload')
 
 module.exports = {
     upload,

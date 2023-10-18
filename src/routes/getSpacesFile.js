@@ -1,11 +1,12 @@
 const { Router } = require('express');
 const {uploadFile, getFiles, getSingleFile} = require('../controllers/Spaces');
-const {upload} = require('../libs/multer');
+//const { uploadFile } = require('../controllers/Upload');
+
 const router = Router();
 
-router.get('/', getFiles)
+//router.get('/', getFiles)
 //router.put('/:id', putCronograma)
-router.post('/', upload, uploadFile)
+router.post('/', uploadFile)
 //router.delete('/:id', deleteCronograma)
 
 

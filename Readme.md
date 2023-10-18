@@ -86,11 +86,10 @@ Ordena el resultado de manera descendente
 
 
 Para subir una imagen al muro
-POST: http://localhost:4001/:num
+POST: http://localhost:4001/spaces
   body:
       {
-        "image" : "url",
-        "texto" : "nckjzhcvsdhflsdj",
+        "image" : "archivo",
       }
     
 
