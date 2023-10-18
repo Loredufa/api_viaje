@@ -20,9 +20,10 @@ const uploadFile = async (req, res) => {
         ACL: 'public-read',
         Bucket: Bucket_name,
         Body: image.data,
-        Key: uniqueIdentifier
+        Key: uniqueIdentifier  //agrego timestamp para hacerlo unico
       }).promise()
       console.log("UPLOAD", uploadObject)
+      //Genero url para retornar
       const urlImage = `https://${Bucket_name}.${s3_endpoint}/${uniqueIdentifier}`;
       const setHeaders = () => {
         res.setHeader('Content-Type', 'application/json');
@@ -35,17 +36,30 @@ const uploadFile = async (req, res) => {
     }
   };
 
-const getFiles = (req, res) => {
-    res.send('All')
-};
-
-const getSingleFile = (req, res) => {
-
+const deleteFile = async (req, res) => {
+  const {image} = req.body
+  try {
+    const url = image
+    const regex = /\/([^/]+)$/; // Expresión regular para capturar la parte final de la URL
+    const match = url.match(regex);
+    if (match && match[1]) {
+    const extractedPart = match[1];
+    const deleteImage = await s3.deleteObject({
+      Bucket: Bucket_name,
+      Key: extractedPart
+    }).promise();
+      res.json({message: 'Imagen eliminada'});
+    } else {
+      res.json({message: 'Imagen eliminada'});
+    }
+  } catch (err) {
+    console.log(err)
+    res.send(err)
+    }
 };
 
 
 module.exports = {
     uploadFile,
-    getFiles,
-    getSingleFile
+    deleteFile
 }

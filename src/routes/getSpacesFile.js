@@ -1,13 +1,13 @@
 const { Router } = require('express');
-const {uploadFile, getFiles, getSingleFile} = require('../controllers/Spaces');
-//const { uploadFile } = require('../controllers/Upload');
+const {uploadFile, deleteFile} = require('../controllers/Spaces');
+
 
 const router = Router();
 
-//router.get('/', getFiles)
-//router.put('/:id', putCronograma)
+
+router.put('/', deleteFile)
 router.post('/', uploadFile)
-//router.delete('/:id', deleteCronograma)
+
 
 
 module.exports = router;

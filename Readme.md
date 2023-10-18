@@ -85,11 +85,18 @@ GET: http://localhost:4001/muro/num_contract
 Ordena el resultado de manera descendente
 
 
-Para subir una imagen al muro
+Para subir una imagen a Digital Ocean
 POST: http://localhost:4001/spaces
   body:
       {
-        "image" : "archivo",
+        "image" : "archivo"
+      }
+
+Para eliminar una imagen en Digital Ocean
+PUT: http://localhost:4001/spaces
+  body:
+      {
+        "image" : "url_imagen"
       }
     
 
@@ -105,7 +112,7 @@ Para dar de alta un día en el cronograma
 POST : http://localhost:4001/itinerario
   body{
   "nombre":"Tandil, 3 dias 2 noches",
-  "texto_gral": "fzngñkjdfngkjdfngkñjfnkjfadn"
+  "texto_gral": "[{titulo: xx, descripcion: yyy}, {titulo: xx, descripcion: yyy}, {titulo: xx, descripcion: yyy}]"
 }
 
 Obtener todos los cronogramas
