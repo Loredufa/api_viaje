@@ -14,7 +14,6 @@ const uploadFile = async (req, res) => {
     const {image} = req.files
     const timestamp = Date.now(); // Obtiene la marca de tiempo actual en milisegundos
     const uniqueIdentifier = `${image.name}-${timestamp}`;
-    console.log('SOY DATE', uniqueIdentifier)
     try {
       const uploadObject = await s3.putObject({
         ACL: 'public-read',
@@ -22,7 +21,6 @@ const uploadFile = async (req, res) => {
         Body: image.data,
         Key: uniqueIdentifier  //agrego timestamp para hacerlo unico
       }).promise()
-      console.log("UPLOAD", uploadObject)
       //Genero url para retornar
       const urlImage = `https://${Bucket_name}.${s3_endpoint}/${uniqueIdentifier}`;
       const setHeaders = () => {

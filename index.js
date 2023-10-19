@@ -11,6 +11,7 @@ const expressJson = express.json();
 const bodyParser  = express.urlencoded({extended: true});
 require("dotenv").config();
 const fileUpload = require('express-fileupload')
+const {createEmoji} = require('./src/controllers/InitialSetup')
 
 
 //Headers
@@ -33,12 +34,11 @@ app.use(fileUpload({
 app.use('/', routes);
 
 
-
-
 //Servidor
 conn.sync({force:true}).then(() => {
   console.log('Base de datos conectada')
   app.listen(PORT, () => {
+    createEmoji()
     console.log(`Servidor corriendo en puerto ${PORT}`)
   })
 })
