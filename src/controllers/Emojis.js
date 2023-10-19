@@ -22,7 +22,17 @@ const addEmoji = async (req,res) => {
   }
   }
 
-  const putViaje = async (req, res) => {
+  const getEmojiById = async (req, res, next) => {
+    try {
+      const id = req.params.id
+      const emoji = await Emoji.findByPk(id)
+      viaje? res.status(200).send(emoji) : res.status(401).send({message:'No se pudo encontrar el emoji'})
+    } catch (error) { console.log("Algo salio mal: ", error); 
+      
+  }
+  }
+
+  const putEmoji = async (req, res) => {
     try {
       const id = req.params.id
       const emoji = req.body
@@ -57,7 +67,8 @@ const addEmoji = async (req,res) => {
   module.exports = {
     addEmoji,
     getAllEmojis,
-    putViaje,
-    deleteEmoji
+    putEmoji,
+    deleteEmoji,
+    getEmojiById
 
 }

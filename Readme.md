@@ -106,6 +106,34 @@ PUT: http://localhost:4001/reaccion/id
               "emoji" : "carita_feliz"  //colocar en el valor de la propiedad emoji el dato que identifica el emoji
             }
 
+**Emojis**
+
+Obtener todos los emojis
+GET http://localhost:4001/emoji
+
+
+Crear un emoji
+POST http://localhost:4001/emoji
+  body {
+    "id":"emoji11",
+    "url": "xxx"
+  }
+
+
+Obtener un emojis
+GET http://localhost:4001/emoji/:id
+
+
+Modificar un emoji
+PUT http://localhost:4001/emoji/:id
+  body{
+    "url": "xxx"
+  }
+
+
+Eliminar un emojis
+DELETE http://localhost:4001/emoji/:id
+
 
 ***Cronograma***
 Para dar de alta un día en el cronograma

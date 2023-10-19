@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const {addEmoji, getAllEmojis, putViaje, deleteEmoji} = require('../controllers/Emojis');
+const {addEmoji, getAllEmojis, putEmoji, deleteEmoji, getEmojiById} = require('../controllers/Emojis');
 const router = Router();
 
 router.get('/', getAllEmojis)
-router.put('/:id', putViaje)
+router.get('/:id', getEmojiById)
+router.put('/:id', putEmoji)
 router.post('/', addEmoji)
 router.delete('/:id', deleteEmoji)
 
