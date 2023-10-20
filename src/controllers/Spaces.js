@@ -13,7 +13,7 @@ const s3 = new AWS.S3({
 const uploadFile = async (req, res) => {
     const {image} = req.files
     const timestamp = Date.now(); // Obtiene la marca de tiempo actual en milisegundos
-    const uniqueIdentifier = `${image.name}-${timestamp}`;
+    const uniqueIdentifier = `${timestamp}-${image.name}`;
     try {
       const uploadObject = await s3.putObject({
         ACL: 'public-read',
