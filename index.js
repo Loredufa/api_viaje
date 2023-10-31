@@ -31,7 +31,7 @@ app.use(fileUpload({
 }))
 
 //Rutas
-app.use('/travel', routes);
+app.use('/', routes);
 
 
 //Servidor
