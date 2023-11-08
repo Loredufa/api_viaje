@@ -192,7 +192,7 @@ DELETE: http://localhost:4001/hoteles/:id
 Esta tabla no se modifican dentro de la api pero son necesarias para completar el flujo de datos
 
 Para dar de alta un contrato
-POST: http://localhost:4001/hoteles
+POST: http://localhost:4001/contrato
 body 
   {
   "num":"1919",
