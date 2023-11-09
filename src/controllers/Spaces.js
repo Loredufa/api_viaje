@@ -38,7 +38,7 @@ const uploadFile = async (req, res) => {
         res.setHeader('Content-Type', 'application/json');
       };
       setHeaders();
-      res.json(urlImage, width, height);
+      res.json({urlImage, width, height});
     } catch (err) {
       console.log(err)
       res.send(err)
