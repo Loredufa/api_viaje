@@ -29,6 +29,7 @@
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.11.0",
+    "sharp": "^0.32.6",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
