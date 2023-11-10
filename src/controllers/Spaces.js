@@ -1,6 +1,6 @@
 const {Bucket_name, aws_access_key_id, aws_access_secret_key, s3_endpoint} = require('../utils/config')
 const AWS = require("aws-sdk") 
-const sharp = require('sharp');
+//const sharp = require('sharp');
 
 //Genero el endpoint
 const spacesEndpoint = new AWS.Endpoint(s3_endpoint)
@@ -12,18 +12,18 @@ const s3 = new AWS.S3({
 })
 //Subo el archivo
 const uploadFile = async (req, res) => {
-    console.log('SOY EL REQUEST', req.files)
+    //console.log('SOY EL REQUEST', req.files)
     const {image} = req.files
     const timestamp = Date.now(); // Obtiene la marca de tiempo actual en milisegundos
     const uniqueIdentifier = `${timestamp}-${image.name}`;
     try {
       // Obtener dimensiones de la imagen con sharp
-      const metadata = await sharp(image.data).metadata();
-      const width = metadata.width;
-      const height = metadata.height;
+      // const metadata = await sharp(image.data).metadata();
+      // const width = metadata.width;
+      // const height = metadata.height;
 
-      console.log('Ancho de la imagen:', width);
-      console.log('Alto de la imagen:', height);
+      // console.log('Ancho de la imagen:', width);
+      // console.log('Alto de la imagen:', height);
 
       const uploadObject = await s3.putObject({
         ACL: 'public-read',
@@ -31,14 +31,14 @@ const uploadFile = async (req, res) => {
         Body: image.data,
         Key: uniqueIdentifier  //agrego timestamp para hacerlo unico
       }).promise()
-      console.log('SOY UOLOADOBJECT', uploadObject)
+      //console.log('SOY UOLOADOBJECT', uploadObject)
       //Genero url para retornar
       const urlImage = `https://${Bucket_name}.${s3_endpoint}/${uniqueIdentifier}`;
       const setHeaders = () => {
         res.setHeader('Content-Type', 'application/json');
       };
       setHeaders();
-      res.json({urlImage, width, height});
+      res.json(urlImage);
     } catch (err) {
       console.log(err)
       res.send(err)
