@@ -22,6 +22,26 @@ const addContrato = async (req,res) => {
   }
   }
 
+  const getContratosByIdViaje = async (req, res) => {
+    try {
+      const travelId = req.params.travelId;
+      console.log('SOY TRAVEL ID', travelId)
+      const contratos = await Contract.findAll({
+          where: {
+            travelId: travelId,
+          },
+        });
+      console.log('SOY CONTRATOS', contratos)
+      if (contratos.length > 0) {
+        res.status(200).send(contratos);
+      } else {
+        res.status(404).send({ mensaje: "Contratos no encontrados" });
+      }
+    } catch (error) { console.log("Algo salio mal: ", error); 
+    res.status(500).send({ message: 'Error interno del servidor' });
+  }
+  }
+
   const selectContratos = async (req, res) => {
     try {
       const contratos = await Contract.findAll();
@@ -52,5 +72,6 @@ const addContrato = async (req,res) => {
   module.exports = {
     addContrato,
     getAllContratos,
-    selectContratos
+    selectContratos,
+    getContratosByIdViaje
 }

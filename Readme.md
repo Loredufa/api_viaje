@@ -237,6 +237,11 @@ POST: http://localhost:4001/coordinador
     "contratos":"[888, 999, 777]"
   }
 
+
+Esta ruta trae los contratos relacionados con un id de viaje
+GET http://localhost:4001/coordinador/:travelId
+
+
 PORT='4001'
 DB_USER ='postgres'
 DB_NAME = 'cuyen'
