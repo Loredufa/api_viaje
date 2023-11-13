@@ -11,6 +11,7 @@ const reaccionRoute = require('./upEmoji');
 const selectRoute = require('./getSelect');
 const spacesRoute = require('./getSpacesFile');
 const emojiRoute = require('./getEmojis');
+const coordinadorRoute = require('./getToCorrdinador');
 const verifyToken = require('../utils/middlewares/verifyToken');
 //const {upload} = require('../libs/multer');
 
@@ -27,6 +28,7 @@ router.use('/reaccion', verifyToken, reaccionRoute)
 router.use('/select', verifyToken, selectRoute)
 router.use('/spaces', spacesRoute)
 router.use('/emoji', verifyToken, emojiRoute)
+router.use('/coordinador', verifyToken, coordinadorRoute)
 
 
 

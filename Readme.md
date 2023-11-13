@@ -211,7 +211,7 @@ body
 }
 
 Para obtener todos los contratos
-GET: http://localhost:4001/hoteles
+GET: http://localhost:4001/contratos
 
 Para el select de contratos
 GET: http://localhost:4001/select
