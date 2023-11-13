@@ -229,7 +229,13 @@ Retorna: [
     "num": "4444",
     "colegio": "San Jose"
   }]
+**Coordinador**
+La ruta recibe un body con todos los contratos que tiene relacionedo el coordinador y devuelve un array con los colegios de cada contrato y el id del viaje al que estan relacionados.
 
+POST: http://localhost:4001/coordinador
+  body {
+    "contratos":"[888, 999, 777]"
+  }
 
 PORT='4001'
 DB_USER ='postgres'
