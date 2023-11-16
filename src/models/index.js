@@ -13,7 +13,6 @@ const Forms = require('./Form')
 const Landing_texts = require('./Landing_text')
 const Emojis = require('./Emoji')
 
-
 const sequelize = new Sequelize(`postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`);
 
 const Travel = Travels(sequelize)
@@ -29,22 +28,13 @@ const Form = Forms(sequelize)
 const Landing_text = Landing_texts(sequelize)
 const Emoji = Emojis(sequelize)
 
+
 //Relaciones
-
-
 Travel.hasMany(Contract)
 Contract.belongsTo(Travel, { foreignKey: 'travelId' }); // coloca travelId en contract
 
 // Contract.hasMany(Passenger)
-// Passenger.belongsTo (Contract) // coloca Contract_id en Passenger CAMBIAR DE MUCHOS S MUCHOS
-
-//Un pasajero tiene muchos contratos
-//Un contrato tiene muchos pasajeros 
-Contract.belongsToMany(Passenger, {through : "Passenger_Contract"});
-Passenger.belongsToMany(Contract, {through : "Passenger_Contract"});
-
-//Un usuario tiene muchos pasajeros
-//Un pasajero pertenece a muchos usuarios
+// Passenger.belongsTo (Contract) // coloca Contract_id en Passenger
 
 Travel.hasMany(Wall)
 Wall.belongsTo (Travel, { foreignKey: 'travelId' }) // coloca TravelId en Wall
@@ -57,7 +47,6 @@ Travel.belongsTo (Hotel, { foreignKey: 'hotelId' }) // coloca hotelId en travel
 
 Schedule.hasMany(Travel) 
 Travel.belongsTo (Schedule, { foreignKey: 'scheduleId' }) //  coloca scheduleId en travel
-
 
 
 module.exports = {

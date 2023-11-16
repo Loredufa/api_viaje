@@ -3,8 +3,7 @@ const emojiJson = require('../libs/upEmoji.json')
 
 const createEmoji = async () => {
     try {
-      const existingEmojis = await Emoji.findAll();
-  
+      const existingEmojis = await Emoji.findAll(); 
       if (existingEmojis.length > 0) {
        return 'Los emojis ya estan creados';
       } else {

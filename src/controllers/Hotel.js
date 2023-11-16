@@ -3,7 +3,7 @@ const { Hotel } = require('../models/index')
 const getAllHoteles = async (req, res) => {
   try {
     const h = await Hotel.findAll()
-    h? res.status(200).send(h) : res.status(401).send({message:'No se encontraron hoteles'})
+    h? res.status(200).send(JSON.stringify(h)) : res.status(401).send({message:'No se encontraron hoteles'})
   } catch (error) { console.log("Algo salio mal: ", error); 
     
 }

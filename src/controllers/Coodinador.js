@@ -3,16 +3,7 @@ const { Op } = require('sequelize');
 
 const getViajeToCoordinador = async (req, res) => {
     try {
-      const contratosString = req.body.contratos;
-  
-      // Convierte el string JSON a un array
-      let contratos;
-      try {
-        contratos = JSON.parse(contratosString);
-      } catch (parseError) {
-        res.status(400).send({ message: 'Error al analizar el JSON de contratos' });
-        return;
-      }
+      const contratos = req.body.contratos;
   
       if (!Array.isArray(contratos)) {
         res.status(400).send({ message: 'Contratos debe ser un array' });

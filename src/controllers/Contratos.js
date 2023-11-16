@@ -13,7 +13,7 @@ const addContrato = async (req,res) => {
     try {
       const viaje = await Contract.findAll()
       if (viaje) {
-        res.send(viaje);
+        res.send(JSON.stringify(viaje));
       } else {
         res.status(404).send({ mensaje: "Contratos no encontrado" });
       }
@@ -25,15 +25,13 @@ const addContrato = async (req,res) => {
   const getContratosByIdViaje = async (req, res) => {
     try {
       const travelId = req.params.travelId;
-      console.log('SOY TRAVEL ID', travelId)
       const contratos = await Contract.findAll({
           where: {
             travelId: travelId,
           },
         });
-      console.log('SOY CONTRATOS', contratos)
       if (contratos.length > 0) {
-        res.status(200).send(contratos);
+        res.status(200).send(JSON.stringify(contratos));
       } else {
         res.status(404).send({ mensaje: "Contratos no encontrados" });
       }
@@ -57,7 +55,7 @@ const addContrato = async (req,res) => {
           colegio: contrato.colegio,
         }));
   
-        res.status(200).send(contratosConColegio);
+        res.status(200).send(JSON.stringify(contratosConColegio));
       } else {
         res.status(404).send({ mensaje: "No hay ningún contrato" });
       }

@@ -13,7 +13,7 @@ const addEmoji = async (req,res) => {
     try {
       const emoji = await Emoji.findAll()
       if (emoji) {
-        res.send(emoji);
+        res.send(JSON.stringify(emoji));
       } else {
         res.status(404).send({ mensaje: "Emojis no encontrados" });
       }

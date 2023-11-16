@@ -236,7 +236,7 @@ POST: http://localhost:4001/coordinador
   body {
     "contratos":"[888, 999, 777]"
   }
-
+[{idviaje, colegios}{idviaje, colegios: san jose 7B/Sarmiento 5A }]
 
 Esta ruta trae los contratos relacionados con un id de viaje
 GET http://localhost:4001/coordinador/:travelId

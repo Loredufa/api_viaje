@@ -3,7 +3,7 @@ const { Travel, Contract } = require('../models/index')
 const getAllViaje = async (req, res) => {
   try {
     const viaje = await Travel.findAll()
-    res.status(200).send(viaje) 
+    res.status(200).send(JSON.stringify(viaje))
   } catch (error) { console.log("Algo salio mal: ", error); 
     
 }

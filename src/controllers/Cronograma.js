@@ -3,7 +3,7 @@ const { Travel, Contract, Schedule } = require('../models/index')
 const getAllcronograma = async (req, res) => {
   try {
     const crono = await Schedule.findAll()
-    res.status(200).send(crono) 
+    res.status(200).send(JSON.stringify(crono)) 
   } catch (error) { console.log("Algo salio mal: ", error); 
    // throw error; //lanzo el error
 }

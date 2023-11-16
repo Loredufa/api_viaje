@@ -21,7 +21,7 @@ const getMuro = async (req, res) => {
       });
 
       if (viaje) {
-        res.status(200).send(viaje); // Envía el resultado ordenado
+        res.status(200).send(JSON.stringify(viaje)); // Envía el resultado ordenado
       } else {
         res.status(401).send({ message: 'No se encontraron publicaciones' });
       }
