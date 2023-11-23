@@ -14,7 +14,7 @@ module.exports = function(sequelize) {
       allowNull: false,
     },
     texto_gral: {
-      type:DataTypes.STRING,
+      type:DataTypes.TEXT,
       allowNull:true,
     }
   })
