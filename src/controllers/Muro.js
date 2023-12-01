@@ -34,6 +34,28 @@ const getMuro = async (req, res) => {
   }
 };
 
+const getMuroByTravelId = async (req, res) => {
+  try {
+    const travelId = req.params.id;
+  //Busco todas las publicaciones relacionadas con el id de viaje
+      const viaje = await Wall.findAll({
+        where: {
+          travelId: travelId,
+        },
+        order: [['createdAt', 'DESC']], // Ordena por createdAt en orden descendente
+      });
+
+      if (viaje) {
+        res.status(200).send(JSON.stringify(viaje)); // Envía el resultado ordenado
+      } else {
+        res.status(401).send({ message: 'No se encontraron publicaciones' });
+      }
+  } catch (error) {
+    console.log("Algo salió mal: ", error);
+    res.status(500).send({ message: 'Hubo un error en el servidor' });
+  }
+}
+
 //Crea una publicacion con una o varias imagenes o videos
 const postMuro = async (req, res) => {
       try {
@@ -153,5 +175,6 @@ module.exports = {
     upMuro,
     postMuro,
     deleteMuro,
-    upEmoji
+    upEmoji,
+    getMuroByTravelId 
 }

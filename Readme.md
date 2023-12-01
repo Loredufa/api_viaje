@@ -85,6 +85,10 @@ GET: http://localhost:4001/muro/num_contract
 Ordena el resultado de manera descendente
 
 
+Para obtener las imágenes del muro por travelId
+GET: http://localhost:4001/muro/get/travelId
+
+
 Para subir una imagen a Digital Ocean
 POST: http://localhost:4001/spaces
   body:
@@ -240,6 +244,12 @@ POST: http://localhost:4001/coordinador
 
 Esta ruta trae los contratos relacionados con un id de viaje
 GET http://localhost:4001/coordinador/:travelId
+
+Esta ruta trae los viajes activos que tiene el coordinador
+PUT http://localhost:4001/coordinador
+  body: {
+     "contratos": ["888", "999"]
+  }
 
 
 PORT='4001'

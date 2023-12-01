@@ -1,9 +1,10 @@
 const { Router } = require('express');
-const {getViajeToCoordinador} = require('../controllers/Coodinador');
+const {getViajeToCoordinador, getViajeActivo} = require('../controllers/Coodinador');
 const {getContratosByIdViaje} = require('../controllers/Contratos');
 const router = Router();
 
 router.post('/', getViajeToCoordinador)
+router.put('/', getViajeActivo)
 router.get('/:travelId', getContratosByIdViaje)
 
 
