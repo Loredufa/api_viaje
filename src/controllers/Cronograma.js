@@ -13,7 +13,7 @@ const getCronogramaById = async (req, res, next) => {
   try {
     const id = req.params.id
     const crono = await Schedule.findByPk(id)
-    crono? res.status(200).send(crono) : res.status(401).send({ message: 'El id del cronograma no existe' })
+    crono? res.status(200).send(JSON.stringify(crono)) : res.status(401).send({ message: 'El id del cronograma no existe' })
   } catch (error) { console.log("Algo salio mal: ", error); 
     //throw error; //lanzo el error
 }
@@ -44,7 +44,7 @@ const getCronogramaByContract = async (req, res, next) => {
         id: scheduleId,
       },
     }) 
-    crono? res.status(200).send(crono) : res.status(404).send({message:'No se encontro el itinerario'})
+    crono? res.status(200).send(JSON.stringify(crono)) : res.status(404).send({message:'No se encontro el itinerario'})
     }
     
   }} catch (error) { console.log("Algo salio mal: ", error); 

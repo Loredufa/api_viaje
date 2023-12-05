@@ -72,7 +72,7 @@ const postMuro = async (req, res) => {
         const completedMuro = {...muro, travelId: travelId}
         //Guardo la publicacion en la bd
         const newMuro = await Wall.create(completedMuro)
-        newMuro? res.status(200).send(newMuro) : res.status(401).send({message: 'No se pudo actualizar el muro'})
+        newMuro? res.status(200).send(JSON.stringify(newMuro)) : res.status(401).send({message: 'No se pudo actualizar el muro'})
         }else {
           res.status(400).send({message: 'El contrato no existe'})
         }

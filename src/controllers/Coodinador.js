@@ -45,7 +45,7 @@ const getViajeToCoordinador = async (req, res) => {
           escuelas: values.join('/'),
         }));
   
-        res.status(200).send(viajes);
+        res.status(200).send(JSON.stringify(viajes));
       }
     } catch (error) {
       console.log("Algo salió mal: ", error);

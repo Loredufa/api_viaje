@@ -13,7 +13,7 @@ const addHotel = async (req,res) => {
   try {
     const h = req.body
     const newHotel = await Hotel.create(h)
-    h? res.status(200).send(newHotel) : res.status(401).send({message:'No se pudo agregar el hotel'})
+    h? res.status(200).sendJSON.stringify((newHotel)) : res.status(401).send({message:'No se pudo agregar el hotel'})
   } catch (error) { console.log("Algo salio mal: ", error); 
     //throw error; //lanzo el error 
 }
@@ -24,7 +24,7 @@ const getHotelById = async (req, res, next) => {
   try {
     const id = req.params.id
     const h = await Hotel.findByPk(id)
-    h? res.status(200).send(h) : res.status(401).send({message:'No se pudo encontrar el hotel'})
+    h? res.status(200).send(JSON.stringify(h)) : res.status(401).send({message:'No se pudo encontrar el hotel'})
   } catch (error) { console.log("Algo salio mal: ", error); 
     
 }
