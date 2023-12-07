@@ -41,6 +41,9 @@ const getViajeToCoordinador = async (req, res) => {
             id: {
               [Op.eq]: travelId,
             },
+            inicioViaje: {
+              [Op.eq]: true,
+            },
             finViaje: {
               [Op.eq]: false,
             },
