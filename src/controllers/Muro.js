@@ -34,6 +34,7 @@ const getMuro = async (req, res) => {
   }
 };
 
+
 const getMuroByTravelId = async (req, res) => {
   try {
     const travelId = req.params.id;
@@ -78,6 +79,21 @@ const postMuro = async (req, res) => {
         }
       } catch (error) { console.log("Algo salio mal: ", error); 
     }
+}
+
+//Crea una publicacion con una o varias imagenes o videos
+const postMuroByTravelId = async (req, res) => {
+  try {
+    const muro = req.body  // estructura del body {image: [url,url,url], texto: 'abc'}
+    const id = req.params.id
+    //Agrego id de viaje para crear la publicacion en la bd
+    const completedMuro = {...muro, travelId: id}
+    //Guardo la publicacion en la bd
+    const newMuro = await Wall.create(completedMuro)
+    newMuro? res.status(200).send(JSON.stringify(newMuro)) : res.status(401).send({message: 'No se pudo actualizar el muro'})
+
+  } catch (error) { console.log("Algo salio mal: ", error); 
+}
 }
 
 //Actulizar una publicacion (puede ser una imagen o el texto)
@@ -176,5 +192,6 @@ module.exports = {
     postMuro,
     deleteMuro,
     upEmoji,
-    getMuroByTravelId 
+    getMuroByTravelId,
+    postMuroByTravelId
 }
