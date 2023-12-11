@@ -14,7 +14,7 @@ module.exports = function(sequelize) {
       allowNull: false,
     },
     texto_gral: {
-      type:DataTypes.TEXT,
+      type: DataTypes.JSON, // Utilizamos JSON como tipo de dato
       allowNull:true,
     }
   })
