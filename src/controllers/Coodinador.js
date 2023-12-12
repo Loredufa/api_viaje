@@ -9,6 +9,7 @@ const getViajeToCoordinador = async (req, res) => {
       res.status(400).send({ message: 'Contratos debe ser un array' });
       return;
     }
+
     const allContract = await Promise.all(
       contratos.map(async (contract) => {
         const foundContract = await Contract.findOne({
@@ -21,6 +22,7 @@ const getViajeToCoordinador = async (req, res) => {
         return foundContract || null;
       })
     );
+
     if (allContract.length === 0) {
       res.status(404).send({ message: 'El coordinador no tiene ningún contrato asociado' });
     } else {
@@ -28,13 +30,19 @@ const getViajeToCoordinador = async (req, res) => {
       const groupedByTravelId = filteredContracts.reduce((groups, el) => {
         const key = el.travelId;
         const value = `${el.colegio}_${el.curso}_${el.division}`;
-        if (!groups[key]) {
-          groups[key] = [value];
-        } else {
-          groups[key].push(value);
+        
+        // Agregar al grupo solo si el travelId no es nulo
+        if (key !== null) {
+          if (!groups[key]) {
+            groups[key] = [value];
+          } else {
+            groups[key].push(value);
+          }
         }
+
         return groups;
       }, {});
+
       const viajes = await Promise.all(Object.entries(groupedByTravelId).map(async ([travelId, values]) => {
         const travel = await Travel.findOne({
           where: {
@@ -46,14 +54,17 @@ const getViajeToCoordinador = async (req, res) => {
             },
           },
         });
+
         if (travel) {
           return {
             travelId,
             escuelas: values.join('/'),
           };
         }
+
         return null;
       }));
+
       const filteredViajes = viajes.filter(viaje => viaje !== null);
       res.status(200).send(JSON.stringify(filteredViajes));
     }
