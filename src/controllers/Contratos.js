@@ -66,10 +66,25 @@ const addContrato = async (req,res) => {
     }
   };
   
+  const getContratosByNum = async (req, res) => {
+    try {
+      const num = req.params.num;
+      const contrato = await Contract.findOne({
+          where: {
+            num
+          },
+        });
+      contrato? res.status(200).send(JSON.stringify(contrato)) :
+        res.status(404).send({ mensaje: "Contrato no encontrados" });
+    } catch (error) { console.log("Algo salio mal: ", error); 
+    res.status(500).send({ message: 'Error interno del servidor' });
+  }
+  }
 
   module.exports = {
     addContrato,
     getAllContratos,
     selectContratos,
-    getContratosByIdViaje
+    getContratosByIdViaje,
+    getContratosByNum
 }

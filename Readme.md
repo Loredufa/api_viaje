@@ -217,6 +217,9 @@ body
 Para obtener todos los contratos
 GET: http://localhost:4001/contratos
 
+Para obtener los contratos por numero de contrato
+GET: http://localhost:4001/contrato/:num
+
 Para el select de contratos
 GET: http://localhost:4001/select
 
