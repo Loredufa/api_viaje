@@ -4,7 +4,7 @@ const router = Router();
 
 router.get('/', getAllcronograma)
 router.get('/:id', getCronogramaById)
-router.get('/:num', getCronogramaByContract)
+router.get('/contract/:num', getCronogramaByContract)
 router.put('/:id', putCronograma)
 router.post('/', addCronograma)
 router.delete('/:id', deleteCronograma)

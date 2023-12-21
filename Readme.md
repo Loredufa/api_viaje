@@ -154,7 +154,7 @@ Obtener cronograma por id
 GET : http://localhost:4001/itinerario/:id
 
 Obtener cronograma por contrato
-GET : http://localhost:4001/itinerario/:num_contrato
+GET : http://localhost:4001/itinerario/contract/:num'
 
 Modificar cronograma
 PUT : http://localhost:4001/itinerario/id

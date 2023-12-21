@@ -21,21 +21,24 @@ const getCronogramaById = async (req, res, next) => {
 
 const getCronogramaByContract = async (req, res, next) => {
   try {
-    const contract = req.params.contract;
+    const num = req.params.num;
+    console.log('SOY CONTRACT', num)
     const contractFound = await Contract.findOne({
       where: {
-        num: contract,
+        num,
       },
     })
     if (!contractFound) { 
       res.status(404).send({message: 'Contrato no encontrado'})   
     } else {
       const travelId = contractFound.travelId
+      console.log('SOY TRAVELID', travelId)
       const viaje = await Travel.findOne({
       where: {
         id: travelId,
       },
     }) 
+    console.log('SOY VIAJEID', viaje)
     if (!viaje) {res.status(404).send({message:'No se encontro el viaje para ese contrato'})}
     else {
     const scheduleId = viaje.scheduleId
@@ -44,6 +47,7 @@ const getCronogramaByContract = async (req, res, next) => {
         id: scheduleId,
       },
     }) 
+    console.log('SOY CRONO', crono)
     crono? res.status(200).send(JSON.stringify(crono)) : res.status(404).send({message:'No se encontro el itinerario'})
     }
     
