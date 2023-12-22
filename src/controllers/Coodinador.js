@@ -52,7 +52,7 @@ const getViajeToCoordinador = async (req, res) => {
           return {
             travelId,
             escuelas: values.join('/'),
-            inicioViaje
+            inicioViaje: travel.inicioViaje
           };
         }
         return null;
