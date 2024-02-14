@@ -106,7 +106,7 @@ const getViajeActivo = async (req, res) => {
       const uniqueActive = allActive
         .filter(Boolean)
         .filter((value, index, self) => self.findIndex((v) => v.id === value.id) === index);
-      console.log('SOY UNIQUEACTIVE', uniqueActive);
+      //console.log('SOY UNIQUEACTIVE', uniqueActive);
       
       if (uniqueActive.length === 0) {
         res.status(404).send({ message: 'El coordinador no tiene ningún viaje activo' });
