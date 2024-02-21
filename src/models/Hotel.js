@@ -43,11 +43,11 @@ module.exports = function(sequelize) {
       allowNull:true,
     },
     fotos: {
-      type:DataTypes.TEXT,
+      type:DataTypes.STRING,
       allowNull:true,
     },
     video: {
-      type:DataTypes.TEXT,
+      type:DataTypes.STRING,
       allowNull:true,
     }
   })
