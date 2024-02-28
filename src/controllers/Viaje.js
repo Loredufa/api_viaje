@@ -28,7 +28,7 @@ const getViajeByContract = async (req, res, next) => {
       },
     })
     if (!contractFound) { 
-      res.status(404).send({message: 'Contrato no encontrado'})   
+      res.status(402).send({message: 'Contrato no encontrado'})   
     } else {
       const travelId = contractFound.travelId
       const viaje = await Travel.findOne({
@@ -36,7 +36,7 @@ const getViajeByContract = async (req, res, next) => {
         id: travelId,
       },
     }) 
-    viaje? res.status(200).send(viaje) : res.status(404).send({message:'No se pudo crear el viaje'})
+    viaje? res.status(200).send(viaje) : res.status(404).send({message:'No encontramos el viaje del contrato ' + contract})
     }
     
   } catch (error) { console.log("Algo salio mal: ", error); 
