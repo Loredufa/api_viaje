@@ -1,4 +1,4 @@
-const {Sequelize} = require('sequelize')
+const {Sequelize, Op} = require('sequelize')
 const {dbUser, dbName, dbPassword, dbHost} = require('../utils/config')
 const Travels = require('./Travel')
 const Landings = require('./Landing')
@@ -69,5 +69,6 @@ module.exports = {
     Form,
     Emoji,
     Version,
+    Op,
     sequelize
 }
