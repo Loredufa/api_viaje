@@ -35,10 +35,10 @@ app.use('/', routes);
 
 
 //Servidor
-conn.sync({force:false}).then(() => {
+conn.sync({force:true}).then(() => {
   console.log('Base de datos conectada')
   app.listen(PORT, () => {
-    createEmoji()
+    //createEmoji()
     console.log(`Servidor corriendo en puerto ${PORT}`)
   })
 })
