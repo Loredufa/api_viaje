@@ -1,72 +1,72 @@
 const {Sequelize, Op} = require('sequelize')
 const {dbUser, dbName, dbPassword, dbHost} = require('../utils/config')
-// const Travels = require('./Travel')
-// const Landings = require('./Landing')
-// const Contracts = require('./Contract')
-// const Passengers = require('./Passenger')
-// const Logins = require('./Login')
-// const Walls = require('./Wall')
-// const Fees = require('./Fee')
-// const Schedules = require('./Schedule')
+const Travels = require('./Travel')
+const Landings = require('./Landing')
+const Contracts = require('./Contract')
+const Passengers = require('./Passenger')
+const Logins = require('./Login')
+const Walls = require('./Wall')
+const Fees = require('./Fee')
+const Schedules = require('./Schedule')
 const Hotels = require('./Hotel')
-// const Forms = require('./Form')
-// const Landing_texts = require('./Landing_text')
-// const Emojis = require('./Emoji')
-// const Versions = require('./Version')
+const Forms = require('./Form')
+const Landing_texts = require('./Landing_text')
+const Emojis = require('./Emoji')
+const Versions = require('./Version')
 
 const sequelize = new Sequelize(`postgres://${dbUser}:${dbPassword}@${dbHost}/${dbName}`);
 
-// const Travel = Travels(sequelize)
-// const Landing = Landings(sequelize)
-// const Contract = Contracts(sequelize)
-// const Passenger = Passengers(sequelize)
-// const Login = Logins(sequelize)
-// const Wall = Walls(sequelize)
-// const Fee = Fees(sequelize)
-// const Schedule = Schedules(sequelize)
+const Travel = Travels(sequelize)
+const Landing = Landings(sequelize)
+const Contract = Contracts(sequelize)
+const Passenger = Passengers(sequelize)
+const Login = Logins(sequelize)
+const Wall = Walls(sequelize)
+const Fee = Fees(sequelize)
+const Schedule = Schedules(sequelize)
 const Hotel = Hotels(sequelize)
-// const Form = Forms(sequelize)
-// const Landing_text = Landing_texts(sequelize)
-// const Emoji = Emojis(sequelize)
-// const Version = Versions(sequelize)
+const Form = Forms(sequelize)
+const Landing_text = Landing_texts(sequelize)
+const Emoji = Emojis(sequelize)
+const Version = Versions(sequelize)
 
 
 //Relaciones
-// Travel.hasMany(Contract)
-// Contract.belongsTo(Travel, { foreignKey: 'travelId' }); // coloca travelId en contract
+Travel.hasMany(Contract)
+Contract.belongsTo(Travel, { foreignKey: 'travelId' }); // coloca travelId en contract
 
 
-// Travel.hasMany(Wall)
-// Wall.belongsTo (Travel, { foreignKey: 'travelId' }) // coloca TravelId en Wall
+Travel.hasMany(Wall)
+Wall.belongsTo (Travel, { foreignKey: 'travelId' }) // coloca TravelId en Wall
 
-// Passenger.hasMany(Fee) 
-// Fee.belongsTo (Passenger, { foreignKey: 'passengerId' }) // colocaPassengerId en Fee
+Passenger.hasMany(Fee) 
+Fee.belongsTo (Passenger, { foreignKey: 'passengerId' }) // colocaPassengerId en Fee
 
-// Hotel.hasMany(Travel)
-// Travel.belongsTo (Hotel, { foreignKey: 'hotelId' }) // coloca hotelId en travel
+Hotel.hasMany(Travel)
+Travel.belongsTo (Hotel, { foreignKey: 'hotelId' }) // coloca hotelId en travel
 
-// Schedule.hasMany(Travel) 
-// Travel.belongsTo (Schedule, { foreignKey: 'scheduleId' }) //  coloca scheduleId en travel
+Schedule.hasMany(Travel) 
+Travel.belongsTo (Schedule, { foreignKey: 'scheduleId' }) //  coloca scheduleId en travel
 
-// Passenger.belongsToMany(Login, {through : "Passenger_Login"});
-// Login.belongsToMany(Passenger, {through : "Passenger_Login"}); //crea una tabla intermedia
+Passenger.belongsToMany(Login, {through : "Passenger_Login"});
+Login.belongsToMany(Passenger, {through : "Passenger_Login"}); //crea una tabla intermedia
 
 
 module.exports = {
      conn: sequelize,
-    // Travel,
-    // Landing,
-    // Contract,
-    // Passenger,
-    // Login,
-    // Wall,
-    // Fee,
-    // Schedule,
+    Travel,
+    Landing,
+    Contract,
+    Passenger,
+    Login,
+    Wall,
+    Fee,
+    Schedule,
     Hotel,
-    // Landing_text,
-    // Form,
-    // Emoji,
-    // Version,
+    Landing_text,
+    Form,
+    Emoji,
+    Version,
     Op,
     sequelize
 }
