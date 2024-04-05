@@ -81,10 +81,28 @@ const addContrato = async (req,res) => {
   }
   }
 
+  const putContrato = async (req, res) => {
+    try {
+      const id = req.params.id
+      const contract = req.body
+      const updateContract = await Schedule.update(contract, {
+        where: {
+          id,
+        },
+      })
+      updateContract[0] !== 0? res.status(200).send({message:'Contrato actualizado'}) : 
+      res.status(401).send({message:'No se puede actualizar el contrato'});
+  
+    } catch (error) { console.log("Algo salio mal: ", error); 
+      //throw error; //lanzo el error
+  }
+  }
+
   module.exports = {
     addContrato,
     getAllContratos,
     selectContratos,
     getContratosByIdViaje,
-    getContratosByNum
+    getContratosByNum,
+    putContrato
 }
