@@ -85,7 +85,7 @@ const addContrato = async (req,res) => {
     try {
       const id = req.params.id
       const contract = req.body
-      const updateContract = await Schedule.update(contract, {
+      const updateContract = await Contract.update(contract, {
         where: {
           id,
         },
